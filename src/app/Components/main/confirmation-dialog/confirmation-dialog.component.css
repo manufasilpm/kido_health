@@ -1,0 +1,9 @@
+:host {
+    display: block;
+    text-align: center;
+  }
+  
+  button {
+    margin: 0 5px;
+    border-radius: 8px; /* Adjust the border-radius as needed */
+  }
