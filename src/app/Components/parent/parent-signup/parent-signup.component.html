@@ -27,5 +27,9 @@
   
         <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid">Sign Up</button>
       </form>
+      <mat-progress-bar *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
     </mat-card-content>
   </mat-card>

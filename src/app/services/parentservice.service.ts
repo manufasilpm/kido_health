@@ -1,23 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Parent } from '../models/Parent';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ParentserviceService {
 
-  private apiUrl = 'http://localhost:8080/'; // Replace with your Spring Boot backend URL
+  private baseUrl = 'http://localhost:9090/parent'; // Replace with your actual backend URL
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getData(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/data`);
-  }
+  saveParent(parent: Parent): Observable<Parent> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  postData(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/data`, data);
-  }
+    return this.http.post<Parent>(`${this.baseUrl}/saveParent`, JSON.stringify(parent), { headers });
 
   
-}
+}}
