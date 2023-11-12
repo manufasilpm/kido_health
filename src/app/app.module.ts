@@ -23,7 +23,9 @@ import { HospitalsignupComponent } from './Components/hospital/hospitalsignup/ho
 import { ParentDashboardComponent } from './Components/parent/parent-dashboard/parent-dashboard.component';
 import { MatTableModule } from '@angular/material/table';
 import { ChildCreationComponent } from './Components/child/child-creation/child-creation.component';
-
+import { HospitalDashboardComponent } from './Components/hospital/hospital-dashboard/hospital-dashboard.component';
+import { BookingPopUpComponent } from './Components/parent/booking-pop-up/booking-pop-up.component';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,8 @@ import { ChildCreationComponent } from './Components/child/child-creation/child-
     HospitalsignupComponent,
     ParentDashboardComponent,
     ChildCreationComponent,
+    HospitalDashboardComponent,
+    BookingPopUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +56,7 @@ import { ChildCreationComponent } from './Components/child/child-creation/child-
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],

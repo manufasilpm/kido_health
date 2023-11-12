@@ -1,0 +1,32 @@
+<p>Book Vaccination Appoinment</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Child name" formControlName="childName">
+    </mat-form-field>
+    
+    
+    <mat-form-field>
+      <mat-label>Select Hospital</mat-label>
+      <mat-select [(value)]="selectedHospital">
+        <mat-option *ngFor="let option of hospitals" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Select Vaccine</mat-label>
+      <mat-select [(value)]="selectedVaccine">
+        <mat-option *ngFor="let option of vaccines" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input matInput [matDatepicker]="dobPicker" placeholder="Choose date for Vaccination" formControlName="dob">
+      <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dobPicker></mat-datepicker>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>
