@@ -18,6 +18,7 @@ export class LoginScreenComponentComponent implements OnInit {
   loginForm: FormGroup;
   errorMessage!: string;
   showProgressBar: boolean = false;
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -27,8 +28,8 @@ export class LoginScreenComponentComponent implements OnInit {
     private router: Router
   ) {
     this.loginForm = this.fb.group({
-      phoneNumber: ['',Validators.required],
-      password: ['',Validators.required],
+      phoneNumber: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
 
@@ -56,14 +57,9 @@ export class LoginScreenComponentComponent implements OnInit {
 
     console.log('clicked');
     const formData = this.loginForm.value;
-    const user: User = new User(
-      formData.phoneNumber,
-      formData.password,
-      
-    );
-    
-    console.log(this.loginForm.get('phoneNumber')?.value+this.loginForm.get('password')?.value);
+    const user: User = new User(formData.phoneNumber, formData.password);
 
+   
 
     if (this.loginForm.valid) {
       const username = this.loginForm.get('phoneNumber')?.value;
@@ -72,18 +68,19 @@ export class LoginScreenComponentComponent implements OnInit {
       this.authService.login(user).subscribe(
         (data) => {
           console.log('Login successful:', data);
-          this.router.navigate(['/parentDashboard']);
+          console.log(username);
+
+          this.router.navigate(['/parentDashboard', { username }]);
         },
         (error) => {
           console.error('Login failed:', error);
-          
+
           this.errorMessage = 'Invalid username or password. Please try again.';
           if (
             error.error &&
             error.error.message === 'Invalid username or password'
           ) {
-            this.errorMessage =
-              'Please enter the correct Credentials';
+            this.errorMessage = 'Please enter the correct Credentials';
           } else {
             this.errorMessage =
               'An unexpected error occurred. Please try again later.';

@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Child } from 'src/app/models/Child';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +17,15 @@ export class ChildService {
     console.log(this.http.get<any[]>(url));
     
     return this.http.get<any[]>(url);
+  }
+
+  saveChild(parent: Child): Observable<Child> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post<Child>(
+      `${this.apiUrl}/saveChild`,
+      JSON.stringify(parent),
+      { headers }
+    );
   }
 }

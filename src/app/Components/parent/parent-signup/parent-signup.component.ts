@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { Router } from '@angular/router';
 import { Parent } from 'src/app/models/Parent';
-import { ParentserviceService } from 'src/app/services/parentservice.service';
+import { ParentserviceService } from 'src/app/services/parent/parentservice.service';
 
 @Component({
   selector: 'app-parent-signup',

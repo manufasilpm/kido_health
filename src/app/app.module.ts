@@ -7,10 +7,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
 import { HomeScreenComponent } from './Components/main/home-screen/home-screen.component';
 import { LoginScreenComponentComponent } from './Components/main/login-screen-component/login-screen-component.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +22,8 @@ import { ParentSignupComponent } from './Components/parent/parent-signup/parent-
 import { HospitalsignupComponent } from './Components/hospital/hospitalsignup/hospitalsignup.component';
 import { ParentDashboardComponent } from './Components/parent/parent-dashboard/parent-dashboard.component';
 import { MatTableModule } from '@angular/material/table';
+import { ChildCreationComponent } from './Components/child/child-creation/child-creation.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +33,7 @@ import { MatTableModule } from '@angular/material/table';
     ParentSignupComponent,
     HospitalsignupComponent,
     ParentDashboardComponent,
+    ChildCreationComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +48,10 @@ import { MatTableModule } from '@angular/material/table';
     HttpClientModule,
     MatProgressBarModule,
     MatTableModule,
+    MatRadioModule ,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
