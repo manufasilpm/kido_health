@@ -1,4 +1,4 @@
-<mat-card class="login-card">
+<!-- <mat-card class="login-card">
     <mat-card-header>
       <mat-card-title>{{receivedCardType?.toUpperCase()}}  Login</mat-card-title>
     </mat-card-header>
@@ -23,4 +23,39 @@
       <button  mat-button color="accent" type="button" (click)="openConfirmationDialog()">New User</button>
 
     </mat-card-content>
-  </mat-card>
+  </mat-card>  -->
+  <div [@routerTransition] class="login-page">
+    <div class="row justify-content-md-center align-items-center h-100">
+        <div class="col-md-4">
+            <img class="user-avatar" src="assets/logo.png" [style.width.px]="150" alt="logo"/> 
+            <h1>Kido Help</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-content">
+                    <div class="form-group" >
+                        <input
+                            [placeholder]="'User Name' | translate"
+                            class="form-control input-underline input-lg"
+                            type="text"
+                            formControlName="phoneNumber"
+                        />
+                    </div>
+
+                    <div class="form-group" >
+                        <input
+                            [placeholder]="'Password' | translate"
+                            class="form-control input-underline input-lg"
+                            type="password"
+                            formControlName="password"
+                        />
+                    </div>
+                </div>
+                <button  class="btn rounded-btn">
+                    Log in
+                </button>
+                &nbsp;
+
+            </form>
+        </div>
+
+    </div>
+</div>

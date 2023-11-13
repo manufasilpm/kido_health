@@ -9,21 +9,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 import { HomeScreenComponent } from './Components/main/home-screen/home-screen.component';
 import { LoginScreenComponentComponent } from './Components/main/login-screen-component/login-screen-component.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmationDialogComponent } from './Components/main/confirmation-dialog/confirmation-dialog.component';
 import { ParentSignupComponent } from './Components/parent/parent-signup/parent-signup.component';
 import { HospitalsignupComponent } from './Components/hospital/hospitalsignup/hospitalsignup.component';
 import { ParentDashboardComponent } from './Components/parent/parent-dashboard/parent-dashboard.component';
 import { MatTableModule } from '@angular/material/table';
 import { ChildCreationComponent } from './Components/child/child-creation/child-creation.component';
-
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { MessagesModule } from 'primeng/messages';
+import { MessageService } from 'primeng/api';
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +46,7 @@ import { ChildCreationComponent } from './Components/child/child-creation/child-
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ToastrModule.forRoot(),
     BrowserAnimationsModule,
     MatCardModule,
     MatFormFieldModule,
@@ -47,13 +56,22 @@ import { ChildCreationComponent } from './Components/child/child-creation/child-
     ReactiveFormsModule,
     HttpClientModule,
     MatProgressBarModule,
+    MessagesModule,
     MatTableModule,
     MatRadioModule ,
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
+    NoopAnimationsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
-  providers: [],
+  providers: [MessageService,ToastrService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

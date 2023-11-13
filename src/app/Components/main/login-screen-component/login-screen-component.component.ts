@@ -6,11 +6,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/authService/auth.service';
 import { JsonpClientBackend } from '@angular/common/http';
 import { User } from 'src/app/models/User';
+import { routerTransition } from 'src/app/router.animations';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-screen-component',
   templateUrl: './login-screen-component.component.html',
-  styleUrls: ['./login-screen-component.component.css'],
+  styleUrls: ['./login.component.scss'],
+  animations: [routerTransition()]
 })
 export class LoginScreenComponentComponent implements OnInit {
   receivedCardType: string | null = '';
@@ -25,7 +28,8 @@ export class LoginScreenComponentComponent implements OnInit {
     private dialog: MatDialog,
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.loginForm = this.fb.group({
       phoneNumber: ['', Validators.required],
@@ -69,6 +73,16 @@ export class LoginScreenComponentComponent implements OnInit {
         (data) => {
           console.log('Login successful:', data);
           console.log(username);
+          this.toastr.success('Hello, this is a custom toast!', 'Success', {
+            timeOut: 3000,          // Duration in milliseconds
+            positionClass: 'toast-top-right',
+            progressBar: true,
+            progressAnimation: 'increasing',
+            closeButton: true,
+            tapToDismiss: false,
+            toastClass: 'toast-success',// Custom class for styling
+          });
+        
 
           this.router.navigate(['/parentDashboard', { username }]);
         },
