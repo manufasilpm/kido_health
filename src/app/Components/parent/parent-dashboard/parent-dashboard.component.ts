@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ChildService } from 'src/app/services/child/child.service';
 import { ParentserviceService } from 'src/app/services/parent/parentservice.service';
 import { ChildCreationComponent } from '../../child/child-creation/child-creation.component';
+import { BookingPopUpComponent } from '../booking-pop-up/booking-pop-up.component';
 
 @Component({
   selector: 'app-parent-dashboard',
@@ -56,6 +57,15 @@ export class ParentDashboardComponent implements OnInit {
   }
   openForm() {
     const dialogRef = this.dialog.open(ChildCreationComponent, {
+      width: '400px',
+      data: { parentId: this.parent_Id }, // Pass the parent ID to ChildCreationComponent
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
+  }
+  openBookingForm() {
+    const dialogRef = this.dialog.open(BookingPopUpComponent, {
       width: '400px',
       data: { parentId: this.parent_Id }, // Pass the parent ID to ChildCreationComponent
     });

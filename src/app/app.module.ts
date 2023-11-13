@@ -32,6 +32,9 @@ import { MessageService } from 'primeng/api';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
+import { HospitalDashboardComponent } from './Components/hospital/hospital-dashboard/hospital-dashboard.component';
+import { BookingPopUpComponent } from './Components/parent/booking-pop-up/booking-pop-up.component';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +45,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HospitalsignupComponent,
     ParentDashboardComponent,
     ChildCreationComponent,
+    HospitalDashboardComponent,
+    BookingPopUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +75,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
+    MatSelectModule
   ],
   providers: [MessageService,ToastrService],
   bootstrap: [AppComponent],
