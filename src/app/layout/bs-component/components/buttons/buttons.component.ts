@@ -8,7 +8,7 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 })
 export class ButtonsComponent implements OnInit {
     model: any = 1;
-    public radioGroupForm: UntypedFormGroup;
+    public radioGroupForm!: UntypedFormGroup;
 
     constructor(private formBuilder: UntypedFormBuilder) {}
 

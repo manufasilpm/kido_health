@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-    public pushRightClass: string;
+    public pushRightClass!: string;
 
     constructor(private translate: TranslateService, public router: Router) {
         this.router.events.subscribe((val) => {
@@ -23,8 +23,8 @@ export class HeaderComponent implements OnInit {
     }
 
     isToggled(): boolean {
-        const dom: Element = document.querySelector('body');
-        return dom.classList.contains(this.pushRightClass);
+        // const dom: Element = document.querySelector('body');
+        return true //dom.classList.contains(this.pushRightClass);
     }
 
     toggleSidebar() {

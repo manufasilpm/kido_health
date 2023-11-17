@@ -28,7 +28,7 @@
     <div class="row justify-content-md-center align-items-center h-100">
         <div class="col-md-4">
             <img class="user-avatar" src="assets/logo.png" [style.width.px]="150" alt="logo"/> 
-            <h1>Kido Help</h1>
+            <h1>Kido Health</h1>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="form-content">
                     <div class="form-group" >
@@ -53,6 +53,9 @@
                     Log in
                 </button>
                 &nbsp;
+                <div>
+                  <button  mat-button color="#FFF" type="button" (click)="openConfirmationDialog()">Register Now</button>
+                </div>
 
             </form>
         </div>

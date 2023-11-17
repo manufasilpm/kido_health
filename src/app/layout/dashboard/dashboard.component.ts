@@ -14,19 +14,19 @@ export class DashboardComponent implements OnInit {
     constructor() {
         this.sliders.push(
             {
-                imagePath: 'assets/images/slider1.jpg',
-                label: 'First slide label',
-                text: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'
+                imagePath: 'assets/slider1.jpeg',
+                label: 'Kido Health',
+                text: 'GET VACCINATED'
             },
             {
-                imagePath: 'assets/images/slider2.jpg',
-                label: 'Second slide label',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+                imagePath: 'assets/slider2.jpg',
+                label: 'Kido Health',
+                text: 'vaccination is the best protection.'
             },
             {
-                imagePath: 'assets/images/slider3.jpg',
-                label: 'Third slide label',
-                text: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
+                imagePath: 'assets/slider3.jpg',
+                label: 'Kido Health',
+                text: 'Vaccination is our collective firebreak when outbreaks happen.'
             }
         );
 
@@ -34,26 +34,27 @@ export class DashboardComponent implements OnInit {
             {
                 id: 1,
                 type: 'success',
-                message: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptates est animi quibusdam praesentium quam, et perspiciatis,
-                consectetur velit culpa molestias dignissimos
-                voluptatum veritatis quod aliquam! Rerum placeat necessitatibus, vitae dolorum`
+                message: `What are vaccines?
+                Vaccines are products that are usually given in childhood to protect against serious, 
+                often deadly diseases. By stimulating your body’s natural defenses, 
+                they prepare your body to fight the disease faster and more effectively.
+                 `
             },
             {
                 id: 2,
                 type: 'warning',
-                message: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptates est animi quibusdam praesentium quam, et perspiciatis,
-                consectetur velit culpa molestias dignissimos
-                voluptatum veritatis quod aliquam! Rerum placeat necessitatibus, vitae dolorum`
+                message: `How do vaccines work?
+                Vaccines help your immune system fight infections more efficiently by sparking your immune response to specific diseases. 
+                Then, if the virus or bacteria ever invades your body in the future, 
+                your immune system will already know how to fight it.`
             }
         );
     }
 
-    ngOnInit() {}
+    // ngOnInit() {}
 
-    public closeAlert(alert: any) {
-        const index: number = this.alerts.indexOf(alert);
-        this.alerts.splice(index, 1);
-    }
+    // public closeAlert(alert: any) {
+    //     const index: number = this.alerts.indexOf(alert);
+    //     this.alerts.splice(index, 1);
+    // }
 }

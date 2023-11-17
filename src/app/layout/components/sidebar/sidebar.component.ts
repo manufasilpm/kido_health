@@ -8,10 +8,10 @@ import { TranslateService } from '@ngx-translate/core';
     styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-    isActive: boolean;
-    collapsed: boolean;
-    showMenu: string;
-    pushRightClass: string;
+    isActive!: boolean;
+    collapsed!: boolean;
+    showMenu!: string;
+    pushRightClass!: string;
 
     @Output() collapsedEvent = new EventEmitter<boolean>();
 
@@ -48,8 +48,8 @@ export class SidebarComponent implements OnInit {
     }
 
     isToggled(): boolean {
-        const dom: Element = document.querySelector('body');
-        return dom.classList.contains(this.pushRightClass);
+        // const dom: Element = document.querySelector('body');
+        return true//dom.classList.contains(this.pushRightClass);
     }
 
     toggleSidebar() {

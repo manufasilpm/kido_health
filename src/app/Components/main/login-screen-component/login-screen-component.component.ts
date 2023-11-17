@@ -84,7 +84,7 @@ export class LoginScreenComponentComponent implements OnInit {
           });
         
 
-          this.router.navigate(['/parentDashboard', { username }]);
+          this.router.navigate(['/hospitalDashboard', { username }]);
         },
         (error) => {
           console.error('Login failed:', error);

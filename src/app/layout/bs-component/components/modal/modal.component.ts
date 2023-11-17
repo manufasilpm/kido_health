@@ -7,11 +7,11 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
     styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent {
-    closeResult: string;
+    closeResult!: string;
 
     constructor(private modalService: NgbModal) {}
 
-    open(content) {
+    open(content: any) {
         this.modalService.open(content).result.then(
             (result) => {
                 this.closeResult = `Closed with: ${result}`;

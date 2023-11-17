@@ -5,30 +5,31 @@
             <span>{{ 'Dashboard' | translate }}</span>
         </a>
         <a [routerLinkActive]="['router-link-active']" [routerLink]="['/charts']" class="list-group-item">
-            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
-            <span>{{ 'Charts' | translate }}</span>
+            <i class="fa fa-heartbeat"></i>&nbsp;
+            <span>{{ 'Vaccine records' | translate }}</span>
         </a>
         <a [routerLinkActive]="['router-link-active']" [routerLink]="['/tables']" class="list-group-item">
-            <i class="fa fa-fw fa-table"></i>&nbsp;
-            <span>{{ 'Tables' | translate }}</span>
+            <i class="fas fa-hand-holding-heart	"></i>&nbsp;
+
+            <span>{{ 'New vaccine request' | translate }}</span>
         </a>
         <a [routerLinkActive]="['router-link-active']" [routerLink]="['/forms']" class="list-group-item">
-            <i class="fa fa-fw fa-edit"></i>&nbsp;
-            <span>{{ 'Forms' | translate }}</span>
+            <i class="fa fa-book"></i>&nbsp;
+            <span>{{ 'Bookings' | translate }}</span>
         </a>
         <a [routerLinkActive]="['router-link-active']" [routerLink]="['/bs-element']" class="list-group-item">
-            <i class="fa fa-fw fa-desktop"></i>&nbsp;
-            <span>{{ 'Bootstrap Element' | translate }}</span>
+            <i class="fa fa-calendar"></i>&nbsp;
+            <span>{{ 'Slot' | translate }}</span>
         </a>
         <a [routerLinkActive]="['router-link-active']" [routerLink]="['/grid']" class="list-group-item">
-            <i class="fa fa-fw fa-wrench"></i>&nbsp;
-            <span>{{ 'Bootstrap Grid' | translate }}</span>
+            <i class="fa fa-user"></i>&nbsp;
+            <span>{{ 'My profile' | translate }}</span>
         </a>
-        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/components']" class="list-group-item">
+        <!-- <a [routerLinkActive]="['router-link-active']" [routerLink]="['/components']" class="list-group-item">
             <i class="fa fa-th-list"></i>&nbsp;
             <span>{{ 'Component' | translate }}</span>
-        </a>
-        <div class="nested-menu">
+        </a> -->
+        <!-- <div class="nested-menu">
             <a (click)="addExpandClass('pages')" class="list-group-item">
                 <i class="fa fa-plus"></i>&nbsp;
                 <span>{{ 'Menu' | translate }}</span>
@@ -142,7 +143,7 @@
                     </ul>
                 </li>
             </div>
-        </div>
+        </div> -->
     </div>
     <div (click)="toggleCollapsed()" [ngClass]="{ collapsed: collapsed }" class="toggle-button">
         <i class="fa fa-fw fa-angle-double-{{ collapsed ? 'right' : 'left' }}"></i>&nbsp;

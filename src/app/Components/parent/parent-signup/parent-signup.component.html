@@ -1,10 +1,11 @@
-<mat-card class="signup-card">
+<div class="signup">
+<mat-card class="signup-card mat-elevation-z0" >
     <mat-card-header>
-      <mat-card-title > Parent Signup</mat-card-title>
+      <mat-card-title class="h1"> Parent Signup</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-        <mat-form-field>
+        <mat-form-field color="accent">
           <mat-label>Parent Name:</mat-label>
           <input matInput formControlName="parentName" required>
         </mat-form-field>
@@ -33,3 +34,4 @@
       </div>
     </mat-card-content>
   </mat-card>
+  </div>

@@ -14,6 +14,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HomeScreenComponent } from './Components/main/home-screen/home-screen.component';
 import { LoginScreenComponentComponent } from './Components/main/login-screen-component/login-screen-component.component';
@@ -35,6 +36,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 import { HospitalDashboardComponent } from './Components/hospital/hospital-dashboard/hospital-dashboard.component';
 import { BookingPopUpComponent } from './Components/parent/booking-pop-up/booking-pop-up.component';
 import { MatSelectModule } from '@angular/material/select';
+import { AuthGuard } from './shared/guard/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +52,7 @@ import { MatSelectModule } from '@angular/material/select';
   ],
   imports: [
     BrowserModule,
+    NgbModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
@@ -77,7 +80,7 @@ import { MatSelectModule } from '@angular/material/select';
     }),
     MatSelectModule
   ],
-  providers: [MessageService,ToastrService],
+  providers: [MessageService,ToastrService,AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
