@@ -86,7 +86,7 @@ export class LoginScreenComponentComponent implements OnInit {
           });
         this.authService.setUserId(parentId.toString());
 
-          this.router.navigate(['/parentDashboard', { username }]);
+          this.router.navigate(['/parentHome', { username }]);
         },
         (error) => {
           console.error('Login failed:', error);

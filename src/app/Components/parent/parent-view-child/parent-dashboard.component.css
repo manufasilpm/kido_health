@@ -1,0 +1,12 @@
+body {
+  padding: 20px;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+}
+.mat-button {
+  background-color: grey;
+  color: white; /* Set the text color to white for better visibility */
+}

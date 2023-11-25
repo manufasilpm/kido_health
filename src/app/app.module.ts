@@ -22,7 +22,7 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 import { ConfirmationDialogComponent } from './Components/main/confirmation-dialog/confirmation-dialog.component';
 import { ParentSignupComponent } from './Components/parent/parent-signup/parent-signup.component';
 import { HospitalsignupComponent } from './Components/hospital/hospitalsignup/hospitalsignup.component';
-import { ParentDashboardComponent } from './Components/parent/parent-dashboard/parent-dashboard.component';
+import { ParentDashboardComponent } from './Components/parent/parent-view-child/parent-dashboard.component';
 import { MatTableModule } from '@angular/material/table';
 import { ChildCreationComponent } from './Components/child/child-creation/child-creation.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -37,6 +37,8 @@ import { HospitalDashboardComponent } from './Components/hospital/hospital-dashb
 import { BookingPopUpComponent } from './Components/parent/booking-pop-up/booking-pop-up.component';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthGuard } from './shared/guard/auth.guard';
+import { ViewBookingsComponent } from './Components/parent/view-bookings/view-bookings.component';
+import { HeaderComponent } from './Components/parent/parent-view-child/header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +51,8 @@ import { AuthGuard } from './shared/guard/auth.guard';
     ChildCreationComponent,
     HospitalDashboardComponent,
     BookingPopUpComponent,
+    ViewBookingsComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

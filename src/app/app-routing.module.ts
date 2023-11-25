@@ -4,21 +4,26 @@ import { LoginScreenComponentComponent } from './Components/main/login-screen-co
 import { HomeScreenComponent } from './Components/main/home-screen/home-screen.component';
 import { ParentSignupComponent } from './Components/parent/parent-signup/parent-signup.component';
 import { HospitalsignupComponent } from './Components/hospital/hospitalsignup/hospitalsignup.component';
-import { ParentDashboardComponent } from './Components/parent/parent-dashboard/parent-dashboard.component';
+import { ParentDashboardComponent } from './Components/parent/parent-view-child/parent-dashboard.component';
 import { HospitalDashboardComponent } from './Components/hospital/hospital-dashboard/hospital-dashboard.component';
-import { DashboardComponent } from './layout/dashboard/dashboard.component';
+import { DashboardComponent } from './Components/hospital/layout/dashboard/dashboard.component';
 import { AuthGuard } from './shared';
-import { LayoutComponent } from './layout/layout.component';
+import { LayoutComponent } from './Components/hospital/layout/layout.component';
+import { ViewBookingsComponent } from './Components/parent/view-bookings/view-bookings.component';
 
 const routes: Routes = [
   { path: '', component: HomeScreenComponent },
   { path: 'login', component: LoginScreenComponentComponent},
   { path: 'parentSignup', component: ParentSignupComponent},
   { path: 'HospitalSignup', component: HospitalsignupComponent},
-  { path: 'parentDashboard', component: ParentDashboardComponent},
+  { path: 'parentViewChild', component: ParentDashboardComponent},
+  { path: 'parentViewBookings', component: ViewBookingsComponent},
   { path: 'hospitalDashboard', 
-    loadChildren: () => import('./layout/layout.module').then((m) => m.LayoutModule),
-},
+    loadChildren: () => import('./Components/hospital/layout/layout.module').then((m) => m.LayoutModule),
+  },
+  { path: 'parentHome', 
+    loadChildren: () => import('./Components/parent/layout/layout.module').then((m) => m.LayoutModule),
+  },
 // { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },
 // { path: 'signup', loadChildren: () => import('./signup/signup.module').then((m) => m.SignupModule) },
 // {
