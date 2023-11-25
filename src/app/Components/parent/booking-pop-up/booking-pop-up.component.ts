@@ -41,7 +41,7 @@ export class BookingPopUpComponent implements OnInit {
       childName: [{ value: this.data.childName, disabled: true }, Validators.required],
       hospitalName: [ Validators.required],
       vaccineName: [ Validators.required],
-      vaccinationDate: [ Validators.required],
+      vaccinationdate: [null, Validators.required],
     });
 
     this.getHospitals();
@@ -53,12 +53,10 @@ export class BookingPopUpComponent implements OnInit {
     if (this.form.valid) {
       // Form is valid, proceed with saving
       const formData = this.form.value;
-      const appointment:Appointment = new Appointment(
+      const appointment: Appointment = new Appointment(
         formData.hospitalName,
         formData.vaccineName,
-        formData.vaccinationDate
-
-        
+        formData.vaccinationdate  // Corrected property name
       );
       console.log('Child ID:', this.data.childId);
       this.bookingService.saveAppointment(this.data.childId,appointment).subscribe(
