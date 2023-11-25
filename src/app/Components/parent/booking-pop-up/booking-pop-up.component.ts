@@ -1,74 +1,87 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { Child } from 'src/app/models/Child';
 import { BookingService } from 'src/app/services/booking/booking.service';
 import { ChildCreationComponent } from '../../child/child-creation/child-creation.component';
+import { Hospital } from 'src/app/models/Hospital';
+import { Vaccine } from 'src/app/models/Vaccine';
+import { Toast } from 'ngx-toastr';
+import { Appointment } from 'src/app/models/Appointment';
 
 @Component({
   selector: 'app-booking-pop-up',
   templateUrl: './booking-pop-up.component.html',
-  styleUrls: ['./booking-pop-up.component.css']
+  styleUrls: ['./booking-pop-up.component.css'],
 })
 export class BookingPopUpComponent implements OnInit {
   form!: FormGroup;
   parent_Id: any;
   selectedHospital!: string;
   selectedVaccine!: string;
-  hospitals = [
-    { label: 'Hospital 1', value: 'option1' },
-    { label: 'Hospital 2', value: 'option2' },
-    { label: 'Hospital 3', value: 'option3' },
-  ];
-  vaccines = [
-    { label: 'Vaccine 1', value: 'option1' },
-    { label: 'Vaccine 2', value: 'option2' },
-    { label: 'Vaccine 3', value: 'option3' },
-  ];
+  hospitals: Hospital[] = [];
+  vaccines: Vaccine[] = [];
 
   constructor(
     private fb: FormBuilder,
     private bookingService: BookingService,
     public dialogRef: MatDialogRef<BookingPopUpComponent>,
+    private snackBar: MatSnackBar,
     private dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: { parentId: string }
+    @Inject(MAT_DIALOG_DATA) public data: { parentId: string ,childName: string,childId:number}
   ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      childName: ['', Validators.required],
-      hospitalName: ['hospital', Validators.required],
-      vaccineName: ['polio', Validators.required],
-      vaccinationDate: ['01/01/2024', Validators.required],
-  
+      childName: [{ value: this.data.childName, disabled: true }, Validators.required],
+      hospitalName: [ Validators.required],
+      vaccineName: [ Validators.required],
+      vaccinationDate: [ Validators.required],
     });
+
+    this.getHospitals();
+    this.getVaccines();
   }
+ 
 
   onSubmit() {
-    // if (this.form.valid) {
-    //   // Form is valid, proceed with saving
-    //   const formData = this.form.value;
-    //   const child: Child = new Child(
-    //     formData.name,
-    //     formData.gender,
-    //     formData.vaccinated,
-    //     formData.complete_date,
-    //     this.formatDate(formData.dob),
-    //     this.data.parentId
-    //   );
+    if (this.form.valid) {
+      // Form is valid, proceed with saving
+      const formData = this.form.value;
+      const appointment:Appointment = new Appointment(
+        formData.hospitalName,
+        formData.vaccineName,
+        formData.vaccinationDate
 
-      // Save child
+        
+      );
+      console.log('Child ID:', this.data.childId);
+      this.bookingService.saveAppointment(this.data.childId,appointment).subscribe(
+        (data) => {
+          console.log('Child saved successfully:', data);
+          this.dialogRef.close();
+        },
+        (error) => {
+          console.error('Error saving child:', error);
+         
+        }
+      )
       
       
-    // }
     
+      }
   }
   private formatDate(date: Date): string {
     const day = ('0' + date.getDate()).slice(-2);
-  const month = ('0' + (date.getMonth() + 1)).slice(-2);
-  const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const year = date.getFullYear();
 
-  return `${day}/${month}/${year}`;
+    return `${day}/${month}/${year}`;
   }
   openForm() {
     const dialogRef = this.dialog.open(ChildCreationComponent, {
@@ -79,5 +92,22 @@ export class BookingPopUpComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
-
+  getHospitals() {
+    this.bookingService.getHospitalList().subscribe(
+      (response) => {
+        this.hospitals = response; // Assuming your service returns an array of hospitals
+      },
+      (error) => {
+        console.error('Error fetching hospitals:', error);
+      }
+    );
+  }
+  getVaccines() {
+    this.bookingService.getVaccinesList().subscribe( (response) => {
+      this.vaccines = response; // Assuming your service returns an array of hospitals
+    },
+    (error) => {
+      console.error('Error fetching hospitals:', error);
+    })
+  }
 }

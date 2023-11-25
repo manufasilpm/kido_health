@@ -13,14 +13,16 @@ export class ParentserviceService {
 
   saveParent(parent: Parent): Observable<Parent> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  
 
     return this.http.post<Parent>(
-      `${this.baseUrl}/saveParent`,
-      JSON.stringify(parent),
-      { headers }
+      `${this.baseUrl}/add`,
+      JSON.stringify(parent),{headers}
+      
     );
   }
 
+ 
   getParentid(phoneNumber: string): Observable<string> {
     const url = `${this.baseUrl}/parent_id/${phoneNumber}`;
     return this.http.get<string>(url);

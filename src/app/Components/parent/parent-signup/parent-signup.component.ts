@@ -52,7 +52,7 @@ export class ParentSignupComponent implements OnInit {
 
     this.parentService.saveParent(parent).subscribe(
       (data) => {
-        console.log('Parent saved successfully:', data);
+        console.log('Parent added successfully.', data);
         this.showProgressBar = false;
         this.router.navigate(['/login', { cardType: 'parent' }]);
 

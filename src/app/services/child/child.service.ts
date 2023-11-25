@@ -4,26 +4,26 @@ import { Observable } from 'rxjs';
 import { Child } from 'src/app/models/Child';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ChildService {
+  private apiUrlchild = 'http://localhost:9090/child';
+  private apiUrlParent = 'http://localhost:9090/parent';
 
-  private apiUrl = 'http://localhost:9090/child';
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getChildrenByParentId(parentId: number): Observable<any[]> {
-    const url = `${this.apiUrl}/all/${parentId}`;
+  getChildrenByParentId(parentId: string): Observable<any[]> {
+    const url = `${this.apiUrlParent}/${parentId}/children`;
     console.log(this.http.get<any[]>(url));
-    
+
     return this.http.get<any[]>(url);
   }
 
-  saveChild(parent: Child): Observable<Child> {
+  saveChild(parent_Id: number, parent: Child): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
+    console.log(parent);
     return this.http.post<Child>(
-      `${this.apiUrl}/saveChild`,
+      `${this.apiUrlchild}/add?parentId=${parent_Id}`,
       JSON.stringify(parent),
       { headers }
     );

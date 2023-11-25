@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ChildService } from 'src/app/services/child/child.service';
@@ -14,64 +14,75 @@ import { BookingPopUpComponent } from '../booking-pop-up/booking-pop-up.componen
 export class ParentDashboardComponent implements OnInit {
   username!: string;
   children!: any[];
+  appointments!: any[];
+  appointmentsColumns = ['appointmentId' /* add more column names */];
   parent_Id!: string;
   constructor(
     private childService: ChildService,
     private parentService: ParentserviceService,
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private cdr: ChangeDetectorRef
   ) {}
 
   bookAppointment(child: any) {
-    // Implement your logic to book a new appointment for the selected child
     console.log('Book appointment for:', child);
   }
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.username = params['username'];
-      console.log('Username:', this.username);
+
     });
+  
 
-    this.parentService.getParentid(this.username).subscribe(
-      (parentId) => {
-        const numericParentId = +parentId;
-        this.parent_Id = parentId;
-        console.log(parentId);
+    const userId: string | null = localStorage.getItem('user_id');
 
-        this.childService.getChildrenByParentId(numericParentId).subscribe(
-          (data) => {
-            this.children = data;
-          },
-          (error) => {
-            console.error('Error getting children:', error);
-          }
-        );
+    this.childService.getChildrenByParentId(userId!).subscribe(
+      (data) => {
+        this.children = data;
       },
       (error) => {
-        console.error('Error getting parentId:', error);
+        console.error('Error getting children:', error);
       }
     );
   }
-  addChild(parentNumber: String) {
-    console.log(parentNumber);
-  }
+
   openForm() {
     const dialogRef = this.dialog.open(ChildCreationComponent, {
       width: '400px',
       data: { parentId: this.parent_Id }, // Pass the parent ID to ChildCreationComponent
     });
     dialogRef.afterClosed().subscribe((result) => {
+      this.refreshTable();
       console.log('The dialog was closed');
     });
   }
-  openBookingForm() {
+  openBookingForm(childName: string, childId: number) {
+    console.log(childId, 'hey ');
+
     const dialogRef = this.dialog.open(BookingPopUpComponent, {
       width: '400px',
-      data: { parentId: this.parent_Id }, // Pass the parent ID to ChildCreationComponent
+      data: { childName: childName, childId: childId },
     });
     dialogRef.afterClosed().subscribe((result) => {
+      this.refreshTable();
       console.log('The dialog was closed');
     });
   }
-  
+
+  private refreshTable() {
+    const userId: string | null = localStorage.getItem('user_id');
+
+    this.childService.getChildrenByParentId(userId!).subscribe(
+      (data) => {
+        this.children = data;
+        // Trigger change detection
+        this.cdr.detectChanges();
+      },
+      (error) => {
+        console.error('Error getting children:', error);
+      }
+    );
+  }
+
 }

@@ -15,7 +15,7 @@
       <!-- Child Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> Child Name </th>
-        <td mat-cell *matCellDef="let child"> {{child.child_name}} </td>
+        <td mat-cell *matCellDef="let child"> {{child.name}} </td>
       </ng-container>
   
     
@@ -29,14 +29,14 @@
       <!-- Last Vaccinated Date Column -->
       <ng-container matColumnDef="lastVaccinated">
         <th mat-header-cell *matHeaderCellDef> Last Vaccinated Date </th>
-        <td mat-cell *matCellDef="let child"> {{child.latest_vaccine}} </td>
+        <td mat-cell *matCellDef="let child"> {{child.lastVaccinated}} </td>
       </ng-container>
   
       <!-- Book Appointment Column -->
       <ng-container matColumnDef="bookAppointment">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let child">
-          <button mat-button (click)="openBookingForm()">Book Appointment</button>
+          <button mat-button (click)="openBookingForm(child.name,child.id)">Book Appointment</button>
         </td>
       </ng-container>
   
@@ -44,3 +44,5 @@
       <tr mat-row *matRowDef="let row; columns: ['slNo', 'name', 'dob', 'lastVaccinated', 'bookAppointment'];"></tr>
     </table>
   </div>
+  <h1>Parent Dashboard</h1>
+

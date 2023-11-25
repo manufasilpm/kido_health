@@ -2,6 +2,7 @@ export class User {
      // Add "?" to make it optional if it's not always present during creation
      phoneNumber: string;
     password: string;
+    parentId!: number;
    
   
     constructor(phoneNumber: string, password: string) {

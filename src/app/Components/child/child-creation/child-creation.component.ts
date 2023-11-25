@@ -41,19 +41,24 @@ export class ChildCreationComponent implements OnInit {
         this.formatDate(formData.dob),
         this.data.parentId
       );
-
-      // Save child
-      this.childService.saveChild(child).subscribe(
-        (data) => {
-          console.log('Child saved successfully:', data);
-          this.dialogRef.close();
-          
-        },
-        (error) => {
-          console.error('Error saving child:', error);
-          // Handle error
-        }
-      );
+      const userId: string | null = localStorage.getItem("user_id");
+      
+      if (userId !== null) {
+        
+        this.childService.saveChild(+userId, child).subscribe(
+          (data) => {
+            console.log('Child saved successfully:', data);
+            this.dialogRef.close();
+          },
+          (error) => {
+            console.error('Error saving child:', error);
+           
+          }
+        );
+      } else {
+        console.error('User ID is null');
+        
+      }
     }
     
   }

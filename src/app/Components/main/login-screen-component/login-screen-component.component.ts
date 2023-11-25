@@ -8,6 +8,7 @@ import { JsonpClientBackend } from '@angular/common/http';
 import { User } from 'src/app/models/User';
 import { routerTransition } from 'src/app/router.animations';
 import { ToastrService } from 'ngx-toastr';
+import { ParentserviceService } from 'src/app/services/parent/parentservice.service';
 
 @Component({
   selector: 'app-login-screen-component',
@@ -70,9 +71,10 @@ export class LoginScreenComponentComponent implements OnInit {
       const password = this.loginForm.get('password')?.value;
 
       this.authService.login(user).subscribe(
-        (data) => {
-          console.log('Login successful:', data);
-          console.log(username);
+        (response) => {
+          // console.log('Login successful:', data);
+          // console.log(username);
+          const parentId = response.parentId;
           this.toastr.success('Hello, this is a custom toast!', 'Success', {
             timeOut: 3000,          // Duration in milliseconds
             positionClass: 'toast-top-right',
@@ -82,9 +84,9 @@ export class LoginScreenComponentComponent implements OnInit {
             tapToDismiss: false,
             toastClass: 'toast-success',// Custom class for styling
           });
-        
+        this.authService.setUserId(parentId.toString());
 
-          this.router.navigate(['/hospitalDashboard', { username }]);
+          this.router.navigate(['/parentDashboard', { username }]);
         },
         (error) => {
           console.error('Login failed:', error);

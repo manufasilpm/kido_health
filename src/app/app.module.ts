@@ -15,7 +15,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HomeScreenComponent } from './Components/main/home-screen/home-screen.component';
 import { LoginScreenComponentComponent } from './Components/main/login-screen-component/login-screen-component.component';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -71,6 +71,7 @@ import { AuthGuard } from './shared/guard/auth.guard';
     MatInputModule,
     MatNativeDateModule,
     NoopAnimationsModule,
+    MatSnackBarModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
