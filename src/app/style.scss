@@ -285,7 +285,9 @@ a:focus {
     width: 100%;
     position: unset;
   }
-
+  .toast {
+    opacity: 1 ;
+ }
   .detail-box {
     color: $primary2;
 

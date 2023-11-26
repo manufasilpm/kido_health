@@ -5,7 +5,10 @@ body {
   background-color: #ffffff;
   overflow-x: hidden;
 }
-
+#toast-container > div {
+  opacity:1;
+}
+.toast-error { background-color: rgba(255,111,105,0.7) !important; }
 .layout_padding {
   padding: 90px 0;
 }

@@ -8,14 +8,12 @@ import { NavigationExtras, Router } from '@angular/router';
 export class HomeScreenComponent implements OnInit {
   selectedCard: number | null = null;
 
- 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   constructor(private router: Router) {}
 
   cardClicked(value: string): void {
+    console.log("Card Type"+value)
     this.router.navigate(['/login', { cardType: value }]);
   }
 
