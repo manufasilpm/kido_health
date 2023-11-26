@@ -23,8 +23,8 @@ export class ChildCreationComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', Validators.required],
       gender: ['male', Validators.required],
-      vaccinated: ['no', Validators.required],
-      complete_date: ['no', Validators.required],
+      vaccinated: ["No", Validators.required],
+      complete_date: ["No vaccination records", Validators.required],
       dob: [Validators.required],
     });
   }
@@ -36,15 +36,14 @@ export class ChildCreationComponent implements OnInit {
       const child: Child = new Child(
         formData.name,
         formData.gender,
-        formData.vaccinated,
-        formData.complete_date,
+        "no",
+        "No vaccination records",
         this.formatDate(formData.dob),
         this.data.parentId
       );
       const userId: string | null = localStorage.getItem("user_id");
       
       if (userId !== null) {
-        
         this.childService.saveChild(+userId, child).subscribe(
           (data) => {
             console.log('Child saved successfully:', data);

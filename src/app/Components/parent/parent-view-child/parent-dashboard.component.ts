@@ -76,6 +76,7 @@ export class ParentDashboardComponent implements OnInit {
     this.childService.getChildrenByParentId(userId!).subscribe(
       (data) => {
         this.children = data;
+        
         // Trigger change detection
         this.cdr.detectChanges();
       },

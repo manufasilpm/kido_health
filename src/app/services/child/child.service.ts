@@ -12,11 +12,11 @@ export class ChildService {
 
   constructor(private http: HttpClient) {}
 
-  getChildrenByParentId(parentId: string): Observable<any[]> {
+  getChildrenByParentId(parentId: string): Observable<Child[]> {
     const url = `${this.apiUrlParent}/${parentId}/children`;
-    console.log(this.http.get<any[]>(url));
+    console.log(this.http.get<Child[]>(url));
 
-    return this.http.get<any[]>(url);
+    return this.http.get<Child[]>(url);
   }
 
   //get bookings for child
