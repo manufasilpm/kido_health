@@ -3,16 +3,6 @@
     <mat-form-field>
       <input matInput placeholder="Child Name" formControlName="childName">
     </mat-form-field>
-    
-    
-    <mat-form-field>
-      <mat-label>Select Hospital</mat-label>
-      <mat-select [(value)]="selectedHospital" formControlName="hospitalName">
-        <mat-option *ngFor="let hospital of hospitals" [value]="hospital.id">
-          {{ hospital.name }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
     <mat-form-field>
       <mat-label>Select Vaccine</mat-label>
       <mat-select [(value)]="selectedVaccine" formControlName="vaccineName">
@@ -21,12 +11,24 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    
     <mat-form-field>
-      <input matInput [matDatepicker]="dobPicker" placeholder="Choose date for Vaccination" formControlName="vaccinationDate">
+      <input matInput [matDatepicker]="dobPicker" placeholder="Choose date for Vaccination" formControlName="vaccinationdate" (dateInput)="getHospitals()">
       <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
       <mat-datepicker #dobPicker></mat-datepicker>
     </mat-form-field>
+    
+    
+    <mat-form-field>
+      <mat-label>Select Hospital</mat-label>
+      <mat-select [(value)]="selectedHospital" formControlName="hospitalName">
+        <mat-option *ngFor="let hospital of hospitals" [value]="hospital.id">
+          {{ hospital.hospitalName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>  
+   
+    
+   
   
     <button mat-raised-button color="primary" type="submit">Submit</button>
   </form>

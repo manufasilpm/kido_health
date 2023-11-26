@@ -26,6 +26,9 @@ export class BookingPopUpComponent implements OnInit {
   selectedVaccine!: string;
   hospitals: Hospital[] = [];
   vaccines: Vaccine[] = [];
+  myDate!: number;
+  day!:number;
+  dayString!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -44,10 +47,10 @@ export class BookingPopUpComponent implements OnInit {
       vaccinationdate: [null, Validators.required],
     });
 
-    this.getHospitals();
+    // this.getHospitals();
     this.getVaccines();
   }
- 
+
 
   onSubmit() {
     if (this.form.valid) {
@@ -58,7 +61,12 @@ export class BookingPopUpComponent implements OnInit {
         formData.vaccineName,
         formData.vaccinationdate  // Corrected property name
       );
+
+      const appointmentDate = formData.vaccinationdate;
+      this.day = appointmentDate.getDay();
       console.log('Child ID:', this.data.childId);
+
+
       this.bookingService.saveAppointment(this.data.childId,appointment).subscribe(
         (data) => {
           console.log('Child saved successfully:', data);
@@ -74,13 +82,7 @@ export class BookingPopUpComponent implements OnInit {
     
       }
   }
-  private formatDate(date: Date): string {
-    const day = ('0' + date.getDate()).slice(-2);
-    const month = ('0' + (date.getMonth() + 1)).slice(-2);
-    const year = date.getFullYear();
 
-    return `${day}/${month}/${year}`;
-  }
   openForm() {
     const dialogRef = this.dialog.open(ChildCreationComponent, {
       width: '400px',
@@ -90,16 +92,7 @@ export class BookingPopUpComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
-  getHospitals() {
-    this.bookingService.getHospitalList().subscribe(
-      (response) => {
-        this.hospitals = response; // Assuming your service returns an array of hospitals
-      },
-      (error) => {
-        console.error('Error fetching hospitals:', error);
-      }
-    );
-  }
+
   getVaccines() {
     this.bookingService.getVaccinesList().subscribe( (response) => {
       this.vaccines = response; // Assuming your service returns an array of hospitals
@@ -108,4 +101,71 @@ export class BookingPopUpComponent implements OnInit {
       console.error('Error fetching hospitals:', error);
     })
   }
-}
+
+ getHospitals() {
+  if (this.form.get('vaccinationdate')?.value) {
+    const selectedDate: Date = this.form.get('vaccinationdate')!.value;
+    this.day = selectedDate.getDay();
+    console.log(this.day);
+    this.getDayFromDate(this.day);
+    this.bookingService.getHospitalsByDay(this.dayString).subscribe(
+      (response) => {
+        if (response) {
+          const uniqueHospitals = Array.from(new Set(response.map(item => item.hospital)));
+          console.log(uniqueHospitals);
+          this.hospitals = uniqueHospitals;
+          
+          // If you want to set the first hospital as the default value
+          if (this.hospitals.length > 0) {
+            this.form.patchValue({
+              hospitalName: this.hospitals[0].id
+            });
+          }
+        } else {
+          console.error('Response array is undefined or null.');
+        }
+      },
+      (error) => {
+        console.error('Error fetching hospitals:', error);
+      }
+    );
+  }
+
+
+
+    }
+    getDayFromDate(day:number){
+
+      switch (this.day) {
+        case 0:
+          this.dayString = 'SUNDAY';
+          break;
+        case 1:
+          this.dayString = 'MONDAY';
+          break;
+        case 2:
+          this.dayString = 'TUESDAY';
+          break;
+        case 3:
+          this.dayString = 'WEDNESDAY';
+          break;
+        case 4:
+          this.dayString = 'THURSDAY';
+          break;
+        case 5:
+          this.dayString = 'FRIDAY';
+          break;
+        case 6:
+          this.dayString = 'SATURDAY';
+          break;
+        default:
+          this.dayString = 'Invalid day';
+      }
+    }
+  }
+  
+  
+
+  
+
+
