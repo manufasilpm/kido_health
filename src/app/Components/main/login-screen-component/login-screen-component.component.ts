@@ -9,6 +9,7 @@ import { User } from 'src/app/models/User';
 import { routerTransition } from 'src/app/router.animations';
 import { ToastrService } from 'ngx-toastr';
 import { ParentserviceService } from 'src/app/services/parent/parentservice.service';
+import { NotificationService } from 'src/app/notification.service';
 
 @Component({
   selector: 'app-login-screen-component',
@@ -22,7 +23,7 @@ export class LoginScreenComponentComponent implements OnInit {
   loginForm: FormGroup;
   errorMessage!: string;
   showProgressBar: boolean = false;
-  
+
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +31,8 @@ export class LoginScreenComponentComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private notifyService : NotificationService
   ) {
     this.loginForm = this.fb.group({
       phoneNumber: ['', Validators.required],
@@ -64,29 +66,27 @@ export class LoginScreenComponentComponent implements OnInit {
     const formData = this.loginForm.value;
     const user: User = new User(formData.phoneNumber, formData.password);
 
-   
+
 
     if (this.loginForm.valid) {
       const username = this.loginForm.get('phoneNumber')?.value;
       const password = this.loginForm.get('password')?.value;
-
+      
       this.authService.login(user).subscribe(
         (response) => {
           // console.log('Login successful:', data);
           // console.log(username);
           const parentId = response.parentId;
-          this.toastr.success('Hello, this is a custom toast!', 'Success', {
-            timeOut: 3000,          // Duration in milliseconds
-            positionClass: 'toast-top-right',
-            progressBar: true,
-            progressAnimation: 'increasing',
-            closeButton: true,
-            tapToDismiss: false,
-            toastClass: 'toast-success',// Custom class for styling
-          });
-        this.authService.setUserId(parentId.toString());
+          
 
-          this.router.navigate(['/parentHome', { username }]);
+          this.authService.setUserId(parentId.toString());
+          console.log("Card Type"+this.receivedCardType)
+          this.notifyService.showSuccess("","Login Success")
+          if (this.receivedCardType == "parent") {
+            this.router.navigate(['/parentHome', { username }]);
+          } else {
+            this.router.navigate(['/hospitalDashboard', { username }]);
+          }
         },
         (error) => {
           console.error('Login failed:', error);

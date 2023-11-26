@@ -6,12 +6,12 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { NgModel, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AppComponent } from './app.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatNativeDateModule } from '@angular/material/core';
+import { AnimationDurations, MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -39,6 +39,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { ViewBookingsComponent } from './Components/parent/view-bookings/view-bookings.component';
 import { HeaderComponent } from './Components/parent/parent-view-child/header/header.component';
+import { FormsModule } from '@angular/forms';
+import { RequestVaccinationComponent } from './Components/hospital/request-vaccination/request-vaccination.component';
+import { ConfirmDialogComponent } from './Components/hospital/confirm-dialog/confirm-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,13 +56,16 @@ import { HeaderComponent } from './Components/parent/parent-view-child/header/he
     BookingPopUpComponent,
     ViewBookingsComponent,
     HeaderComponent,
+    RequestVaccinationComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
+    FormsModule,
     AppRoutingModule,
-    ToastrModule.forRoot(),
     BrowserAnimationsModule,
+  
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
@@ -83,7 +89,11 @@ import { HeaderComponent } from './Components/parent/parent-view-child/header/he
         deps: [HttpClient],
       },
     }),
-    MatSelectModule
+    MatSelectModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right', // Set the position where the toast should appear
+      preventDuplicates: true,
+    }),
   ],
   providers: [MessageService,ToastrService,AuthGuard],
   bootstrap: [AppComponent],

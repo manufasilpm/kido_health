@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../../../router.animations';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-dashboard',
@@ -8,10 +9,11 @@ import { routerTransition } from '../../../../router.animations';
     animations: [routerTransition()]
 })
 export class DashboardComponent implements OnInit {
+
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
 
-    constructor() {
+    constructor(private router:Router) {
         this.sliders.push(
             {
                 imagePath: 'assets/slider1.jpeg',
@@ -51,9 +53,14 @@ export class DashboardComponent implements OnInit {
         );
     }
     ngOnInit(): void {
-        throw new Error('Method not implemented.');
     }
-
+    requestVaccine() {
+            this.router.navigateByUrl("/requestVaccine")
+    }
+    
+    viewBookings() {
+            this.router.navigateByUrl("/hospitalDashboard/bookings")
+    }
     // ngOnInit() {}
 
     // public closeAlert(alert: any) {
