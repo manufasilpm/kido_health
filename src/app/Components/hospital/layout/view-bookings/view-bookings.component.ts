@@ -16,7 +16,7 @@ export class HospitalViewBookingsComponent implements OnInit {
   errorMessage!: string;
   showProgressBar: boolean = false;
   result: string = '';
-
+  minDate: Date ;
 
  //show hide div variables
  userlogin = true;
@@ -37,9 +37,9 @@ export class HospitalViewBookingsComponent implements OnInit {
     private parentService: HospitalService,
     private router:Router,
     public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: { parentId: string ,childName: string,childId:number}
-
-  ) {}
+  ) {
+    this.minDate=new Date()
+  }
 
   ngOnInit(): void {
     this.initForm();

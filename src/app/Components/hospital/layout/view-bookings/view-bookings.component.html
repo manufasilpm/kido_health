@@ -4,13 +4,15 @@
       <div class="row align-items-center">
         <div  >
           <div class="card">
-            <div class="card-header px-lg-4">
-              <div  style="color: green; font-weight: bold; font-size: 25px;">Bookings</div>
-              <div>
-                <!-- <input matInput [matDatepicker]="dobPicker" placeholder="Choose date for Vaccination" formControlName="vaccinationDate">
+            <div class="card-header px-lg-4 ">
+              <div class="row">
+              <div class="col-md-6" style="color: green; font-weight: bold; font-size: 25px;">Bookings</div>
+              <div class="col-md-6">
+                <input matInput [matDatepicker]="dobPicker" [min]="minDate" placeholder="Choose date for Vaccination" formControlName="vaccinationDate">
                 <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
-                <mat-datepicker #dobPicker></mat-datepicker> -->
+                <mat-datepicker #dobPicker></mat-datepicker>
               </div>
+            </div>
             </div>
             <div class="card-body ">
               <div >
