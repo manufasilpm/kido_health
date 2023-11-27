@@ -48,7 +48,7 @@ export class BookingService {
       const url = `http://localhost:9090/api/vaccination/hospitals-by-day?dayOfWeek=${day}`;
       console.log("hey");
       console.log(this.http.get<any[]>(url));
-       // Adjust the endpoint based on your API
+       
       return this.http.get<any[]>(url);
       
     }

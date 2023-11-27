@@ -30,21 +30,14 @@ export class BookingPopUpComponent implements OnInit {
   day!:number;
   dayString!: string;
 
-  constructor(
-    private fb: FormBuilder,
-    private bookingService: BookingService,
-    public dialogRef: MatDialogRef<BookingPopUpComponent>,
-    private snackBar: MatSnackBar,
-    private dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: { parentId: string ,childName: string,childId:number}
-  ) {}
+  
 
   ngOnInit(): void {
     this.form = this.fb.group({
       childName: [{ value: this.data.childName, disabled: true }, Validators.required],
       hospitalName: [ Validators.required],
       vaccineName: [ Validators.required],
-      vaccinationdate: [null, Validators.required],
+      vaccinationdate: [    Validators.required],
     });
 
     // this.getHospitals();
@@ -54,14 +47,13 @@ export class BookingPopUpComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      // Form is valid, proceed with saving
+
       const formData = this.form.value;
       const appointment: Appointment = new Appointment(
         formData.hospitalName,
         formData.vaccineName,
         formData.vaccinationdate  // Corrected property name
       );
-
       const appointmentDate = formData.vaccinationdate;
       this.day = appointmentDate.getDay();
       console.log('Child ID:', this.data.childId);
@@ -114,13 +106,7 @@ export class BookingPopUpComponent implements OnInit {
           const uniqueHospitals = Array.from(new Set(response.map(item => item.hospital)));
           console.log(uniqueHospitals);
           this.hospitals = uniqueHospitals;
-          
-          // If you want to set the first hospital as the default value
-          if (this.hospitals.length > 0) {
-            this.form.patchValue({
-              hospitalName: this.hospitals[0].id
-            });
-          }
+         
         } else {
           console.error('Response array is undefined or null.');
         }
@@ -130,9 +116,6 @@ export class BookingPopUpComponent implements OnInit {
       }
     );
   }
-
-
-
     }
     getDayFromDate(day:number){
 
@@ -161,6 +144,16 @@ export class BookingPopUpComponent implements OnInit {
         default:
           this.dayString = 'Invalid day';
       }
+    }
+
+    constructor(
+      private fb: FormBuilder,
+      private bookingService: BookingService,
+      public dialogRef: MatDialogRef<BookingPopUpComponent>,
+      private dialog: MatDialog,
+      @Inject(MAT_DIALOG_DATA) public data: { parentId: string ,childName: string,childId:number}
+    ) {
+      console.log(this.form);
     }
   }
   
