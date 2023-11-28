@@ -1,6 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&amp;display=swap");
+body {
+  padding: 20px;
+}
 
+/* Change text color of <th> in the ng-container */
+.ng-container th {
+  font-weight: bold;
+  font-size: 15px;
+  color: black; /* Change this to your desired color */
+}
 
+/* Change text color of <td> in the ng-container */
+.ng-container td {
+  color: black; /* Change this to your desired color */
+}
+
+table {
+  width: 100%;
+}
+.row-content:hover {
+  background-color: rgb(238, 245, 247); /* Change this to your desired hover effect */
+  /* Add any other styling for hover effect */
+}
 .card-header:first-child {
   .body{
     background-color: rgb(178, 234, 224);
@@ -15,10 +36,6 @@
     box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
     z-index: 2;
     }
-    .row-content:hover {
-      background-color: rgb(238, 245, 247); /* Change this to your desired hover effect */
-      /* Add any other styling for hover effect */
-    }
     .card {
     position: relative;
     display: flex;
@@ -30,6 +47,10 @@
     border: none;
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
     border-radius: 1rem;
+    }
+    .row-content:hover {
+      background-color: rgb(238, 245, 247); /* Change this to your desired hover effect */
+      /* Add any other styling for hover effect */
     }
     .center-box {
       position:fixed;
@@ -87,4 +108,3 @@
     text-decoration: underline!important;
     cursor: pointer;
     }
-

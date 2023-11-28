@@ -8,10 +8,10 @@ import { VaccineService } from 'src/app/services/vaccine/vaccineservice.service'
 
 @Component({
   selector: 'app-request-vaccination',
-  templateUrl: './request-vaccination.component.html',
-  styleUrls: ['./request-vaccination.component.css']
+  templateUrl: './add-vaccination.component.html',
+  styleUrls: ['./add-vaccination.component.css']
 })
-export class RequestVaccinationComponent implements OnInit {
+export class AddVaccinationComponent implements OnInit {
   vaccineForm: any;
   errorMessage!: string;
   showProgressBar: boolean = false;
@@ -59,15 +59,15 @@ export class RequestVaccinationComponent implements OnInit {
       formData.agelevel,
       formData.company,
       formData.description,
-      "Pending"
+      "Approved"
     );
 
     this.vaccineService.requestVaccine(vaccine).subscribe(
       (data) => {
         
-        this.toast.success("Vaccine requested successfully")
+        this.toast.success("Vaccine added successfully")
         this.showProgressBar = false;
-        this.router.navigate(['/hospitalDashboard']);
+        this.router.navigate(['/adminHome/vaccines']);
 
       },
       (error) => {

@@ -11,6 +11,7 @@ import { AuthGuard } from './shared';
 import { LayoutComponent } from './Components/hospital/layout/layout.component';
 import { RequestVaccinationComponent } from './Components/hospital/request-vaccination/request-vaccination.component';
 import { HospitalViewBookingsComponent } from './Components/hospital/layout/view-bookings/view-bookings.component';
+import { AddVaccinationComponent } from './Components/admin/add-vaccination/add-vaccination.component';
 
 const routes: Routes = [
   { path: '', component: HomeScreenComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'HospitalSignup', component: HospitalsignupComponent},
   { path: 'parentViewChild', component: ParentDashboardComponent},
   { path: 'requestVaccine', component: RequestVaccinationComponent},
+  { path: 'addVaccine', component: AddVaccinationComponent},
   { path: 'hospitalViewBookings', component: HospitalViewBookingsComponent},
   { path: 'hospitalDashboard', 
     loadChildren: () => import('./Components/hospital/layout/layout.module').then((m) => m.LayoutModule),

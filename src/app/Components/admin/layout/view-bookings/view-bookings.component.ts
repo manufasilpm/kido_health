@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmDialogModel } from 'src/app/models/ConfirmDialogModel';
 import { HospitalService } from 'src/app/services/hospital/hospital.service';
-import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
+import { AdminConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -55,7 +55,7 @@ export class AdminViewBookingsComponent implements OnInit {
 
     const dialogData = new ConfirmDialogModel("Confirm Action", message);
 
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    const dialogRef = this.dialog.open(AdminConfirmDialogComponent, {
       width: "350px",
       height:"250px",
       data: dialogData

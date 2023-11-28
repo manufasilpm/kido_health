@@ -27,4 +27,11 @@ export class HospitalService {
     const url = `${this.baseUrl}/parent_id/${phoneNumber}`;
     return this.http.get<string>(url);
   }
+
+  getAllHospitals(): Observable<Hospital[]> {
+    const url = `${this.baseUrl}/all`;
+    console.log(this.http.get<Hospital[]>(url));
+
+    return this.http.get<Hospital[]>(url);
+  }
 }

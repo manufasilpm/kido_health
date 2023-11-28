@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
 
-    constructor(private router:Router) {
+    constructor(private router: Router) {
         this.sliders.push(
             {
                 imagePath: 'assets/admin1.jpeg',
@@ -55,11 +55,18 @@ export class DashboardComponent implements OnInit {
     ngOnInit(): void {
     }
     requestVaccine() {
-            this.router.navigateByUrl("/requestVaccine")
+        this.router.navigateByUrl("/requestVaccine")
     }
-    
+
+    addVaccine() {
+        this.router.navigateByUrl("/adminHome/vaccines")
+    }
     viewBookings() {
-            this.router.navigateByUrl("/adminHome/bookings")
+        this.router.navigateByUrl("/adminHome/bookings")
+    }
+
+    viewHospitals() {
+        this.router.navigateByUrl("/adminHome/hospitals")
     }
     // ngOnInit() {}
 

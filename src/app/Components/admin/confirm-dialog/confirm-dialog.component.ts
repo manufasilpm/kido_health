@@ -7,11 +7,11 @@ import { ConfirmDialogModel } from 'src/app/models/ConfirmDialogModel';
   templateUrl: './confirm-dialog.component.html',
   styleUrls: ['./confirm-dialog.component.css']
 })
-export class ConfirmDialogComponent implements OnInit {
+export class AdminConfirmDialogComponent implements OnInit {
   title!: string | undefined;
   message: string | undefined;
 
-  constructor(public dialogRef: MatDialogRef<ConfirmDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<AdminConfirmDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogModel) {
     // Update view with given values
     this.title = data.title;

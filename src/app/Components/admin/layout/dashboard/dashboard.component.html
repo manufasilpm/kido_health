@@ -20,22 +20,21 @@
     </div>
     <hr />
     <div class="row">
-        <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'primary'" [count]="26" [icon]="'fa fa-heartbeat'" [label]="'Hospital Management'"></app-stat>
+        <div class="col-xl-3 col-lg-6" (click)="viewHospitals()">
+            <app-stat [bgClass]="'primary'"  [icon]="'fa fa-heartbeat'" [label]="'Hospital Management'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6" (click)="requestVaccine()">
-            <app-stat [bgClass]="'warning'" [count]="12" [icon]="'fa-tasks'" [label]="'New Vaccine Request'"></app-stat>
+            <app-stat [bgClass]="'warning'"  [icon]="'fa-tasks'" [label]="'New Vaccine Request'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6" (click)="viewBookings()">
             <app-stat
                 [bgClass]="'success'"
-                [count]="124"
                 [icon]="'fa fa-book'"
-                [label]="'Send Reminders'"
+                [label]="'Send Reminder Notifications'"
             ></app-stat>
         </div>
-        <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'danger'" [count]="13" [icon]="'fa fa-calendar'" [label]="'Parents Management'"></app-stat>
+        <div class="col-xl-3 col-lg-6" (click)="addVaccine()">
+            <app-stat [bgClass]="'danger'"  [icon]="'fa fa-calendar'" [label]="'Manage Vaccines'"></app-stat>
         </div>
     </div>
     <hr />

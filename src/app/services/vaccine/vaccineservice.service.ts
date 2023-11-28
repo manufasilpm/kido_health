@@ -23,8 +23,25 @@ export class VaccineService {
   }
 
  
-  getParentid(phoneNumber: string): Observable<string> {
-    const url = `${this.baseUrl}/parent_id/${phoneNumber}`;
-    return this.http.get<string>(url);
+  getAllVaccines(): Observable<Vaccine[]> {
+    const url = `${this.baseUrl}/all`;
+    console.log(this.http.get<Vaccine[]>(url));
+
+    return this.http.get<Vaccine[]>(url);
+  }
+
+  updateVaccineStatus(vaccine: Vaccine): Observable<Vaccine> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  
+
+    return this.http.put<Vaccine>(
+      `${this.baseUrl}/update/${vaccine.vaccineId}`,
+      JSON.stringify(vaccine),{headers}
+      
+    );
+  }
+  deleteVaccine(id: number | undefined): Observable<Vaccine> {
+    const url = `${this.baseUrl}/delete/${id}`;
+    return this.http.delete<Vaccine>(url);
   }
 }
