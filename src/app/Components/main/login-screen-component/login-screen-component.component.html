@@ -54,7 +54,7 @@
                 </button>
                 &nbsp;
                 <div>
-                  <button  mat-button color="#FFF" type="button" (click)="openConfirmationDialog()">Register Now</button>
+                  <button  mat-button color="#FFF" type="button" (click)="openConfirmationDialog()" *ngIf="showRegister">Register Now</button>
                 </div>
 
             </form>

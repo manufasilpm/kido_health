@@ -9,17 +9,16 @@ import { HospitalDashboardComponent } from './Components/hospital/hospital-dashb
 import { DashboardComponent } from './Components/hospital/layout/dashboard/dashboard.component';
 import { AuthGuard } from './shared';
 import { LayoutComponent } from './Components/hospital/layout/layout.component';
-import { ViewBookingsComponent } from './Components/parent/view-bookings/view-bookings.component';
 import { RequestVaccinationComponent } from './Components/hospital/request-vaccination/request-vaccination.component';
 import { HospitalViewBookingsComponent } from './Components/hospital/layout/view-bookings/view-bookings.component';
 
 const routes: Routes = [
   { path: '', component: HomeScreenComponent },
   { path: 'login', component: LoginScreenComponentComponent},
+  { path: 'admin/login', component: LoginScreenComponentComponent},
   { path: 'parentSignup', component: ParentSignupComponent},
   { path: 'HospitalSignup', component: HospitalsignupComponent},
   { path: 'parentViewChild', component: ParentDashboardComponent},
-  { path: 'parentViewBookings', component: ViewBookingsComponent},
   { path: 'requestVaccine', component: RequestVaccinationComponent},
   { path: 'hospitalViewBookings', component: HospitalViewBookingsComponent},
   { path: 'hospitalDashboard', 
@@ -27,6 +26,9 @@ const routes: Routes = [
   },
   { path: 'parentHome', 
     loadChildren: () => import('./Components/parent/layout/layout.module').then((m) => m.LayoutModule),
+  },
+  { path: 'adminHome', 
+    loadChildren: () => import('./Components/admin/layout/layout.module').then((m) => m.LayoutModule),
   },
 // { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },
 // { path: 'signup', loadChildren: () => import('./signup/signup.module').then((m) => m.SignupModule) },

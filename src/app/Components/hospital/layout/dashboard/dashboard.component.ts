@@ -16,41 +16,23 @@ export class DashboardComponent implements OnInit {
     constructor(private router:Router) {
         this.sliders.push(
             {
-                imagePath: 'assets/slider1.jpeg',
+                imagePath: 'assets/hospital1.png',
                 label: 'Kido Health',
                 text: 'GET VACCINATED'
             },
             {
-                imagePath: 'assets/slider2.jpg',
+                imagePath: 'assets/hospital2.png',
                 label: 'Kido Health',
                 text: 'vaccination is the best protection.'
             },
             {
-                imagePath: 'assets/slider3.jpg',
+                imagePath: 'assets/hospital3.png',
                 label: 'Kido Health',
                 text: 'Vaccination is our collective firebreak when outbreaks happen.'
             }
         );
 
-        this.alerts.push(
-            {
-                id: 1,
-                type: 'success',
-                message: `What are vaccines?
-                Vaccines are products that are usually given in childhood to protect against serious, 
-                often deadly diseases. By stimulating your body’s natural defenses, 
-                they prepare your body to fight the disease faster and more effectively.
-                 `
-            },
-            {
-                id: 2,
-                type: 'warning',
-                message: `How do vaccines work?
-                Vaccines help your immune system fight infections more efficiently by sparking your immune response to specific diseases. 
-                Then, if the virus or bacteria ever invades your body in the future, 
-                your immune system will already know how to fight it.`
-            }
-        );
+       
     }
     ngOnInit(): void {
     }

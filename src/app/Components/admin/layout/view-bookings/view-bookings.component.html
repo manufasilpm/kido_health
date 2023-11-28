@@ -1,0 +1,80 @@
+<div [@routerTransition]>
+<div class="center-box">
+    <div class="container">
+      <div class="row align-items-center">
+        <div  >
+          <div class="card">
+            <div class="card-header px-lg-4 ">
+              <div class="row">
+              <div class="col-md-6" style="color: green; font-weight: bold; font-size: 25px;">Bookings</div>
+              <div class="col-md-6">
+                <input matInput [matDatepicker]="dobPicker" [min]="minDate" placeholder="Choose date for Vaccination" formControlName="vaccinationDate">
+                <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+                <mat-datepicker #dobPicker></mat-datepicker>
+              </div>
+            </div>
+            </div>
+            <div class="card-body ">
+              <div >
+                <div >
+                  <div class="card-body">
+                   
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead >
+                          <tr >
+                            <th>User</th>
+                            <th>Product</th>
+                            <th>Sale</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody (click)="confirmDialog()">
+                          <tr>
+                            <td>Jacob</td>
+                            <td>Photoshop</td>
+                            <td class="text-danger"> 28.76% <i class="ti-arrow-down"></i></td>
+                            <td><label class="badge badge-danger">Pending</label></td>
+                          </tr>
+                          <tr>
+                            <td>Messsy</td>
+                            <td>Flash</td>
+                            <td class="text-danger"> 21.06% <i class="ti-arrow-down"></i></td>
+                            <td><label class="badge badge-warning">In progress</label></td>
+                          </tr>
+                          <tr>
+                            <td>John</td>
+                            <td>Premier</td>
+                            <td class="text-danger"> 35.00% <i class="ti-arrow-down"></i></td>
+                            <td><label class="badge badge-info">Fixed</label></td>
+                          </tr>
+                          <tr>
+                            <td>Peter</td>
+                            <td>After effects</td>
+                            <td class="text-success"> 82.00% <i class="ti-arrow-up"></i></td>
+                            <td><label class="badge badge-success" style="color: blue;">Completed</label></td>
+                          </tr>
+                          <tr>
+                            <td>Dave</td>
+                            <td>53275535</td>
+                            <td class="text-success"> 98.05% <i class="ti-arrow-up"></i></td>
+                            <td><label class="badge badge-warning">In progress</label></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer px-lg-5 py-lg-4">
+              <div class="text-sm text-muted">Send reminders on daily basis.</div>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+</div>
+

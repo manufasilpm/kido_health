@@ -1,15 +1,14 @@
 export class Hospital {
   id?: number; // Add "?" to make it optional if it's not always present during creation
-  hospitalName: string;
+  name: string;
     password: string;
     address: string;
-    phone_no: string;
+    phoneNumber: string;
   
-    constructor(id:number ,hospitalName: string, password: string, address: string, phone_no: string) {
-      this.hospitalName = hospitalName;
-      this.id=id;
+    constructor(hospitalName: string, password: string, address: string, phone_no: string) {
+      this.name = hospitalName;
       this.password = password;
       this.address = address;
-      this.phone_no = phone_no;
+      this.phoneNumber = phone_no;
     }
   }

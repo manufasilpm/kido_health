@@ -16,11 +16,15 @@ export class AuthService {
     console.log("called");
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     console.log(JSON.stringify(user));
-    
+    return this.http.post<User>(`http://localhost:9090/auth/login`, JSON.stringify(user), { headers });    
+  }
 
-    return this.http.post<User>(`http://localhost:9090/auth/login`, JSON.stringify(user), { headers });
 
-    
+  hospitalLogin(user:User): Observable<User> {
+    console.log("called");
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    console.log(JSON.stringify(user));
+    return this.http.post<User>(`http://localhost:9090/auth/hospitalLogin`, JSON.stringify(user), { headers });    
   }
 
 

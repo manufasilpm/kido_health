@@ -8,10 +8,12 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
-    imports: [CommonModule, LayoutRoutingModule, TranslateModule, NgbDropdownModule,NgbModule],
+    imports: [CommonModule, LayoutRoutingModule, TranslateModule, NgbDropdownModule,NgbModule,MatButtonModule,MatTableModule],
     declarations: [LayoutComponent, SidebarComponent, HeaderComponent]
 })
 export class LayoutModule {}

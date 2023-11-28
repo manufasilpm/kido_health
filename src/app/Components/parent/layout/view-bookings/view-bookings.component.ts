@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ChildService } from 'src/app/services/child/child.service';
 import { ParentserviceService } from 'src/app/services/parent/parentservice.service';
-import { ChildCreationComponent } from '../../child/child-creation/child-creation.component';
-import { BookingPopUpComponent } from '../booking-pop-up/booking-pop-up.component';
+import { ChildCreationComponent } from '../../../child/child-creation/child-creation.component';
+import { BookingPopUpComponent } from '../../booking-pop-up/booking-pop-up.component';
 
 @Component({
   selector: 'app-view-bookings',
