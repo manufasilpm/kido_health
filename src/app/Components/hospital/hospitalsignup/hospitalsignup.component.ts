@@ -16,7 +16,7 @@ export class HospitalsignupComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private hospitalService: HospitalService,
+    private parentService: HospitalService,
     private router:Router
   ) {}
 
@@ -25,7 +25,7 @@ export class HospitalsignupComponent implements OnInit {
   }
   initForm(): void {
     this.signupForm = this.fb.group({
-      hospitalName: ['', Validators.required],
+      parentName: ['', Validators.required],
       password: [
         '',
         [
@@ -42,18 +42,18 @@ export class HospitalsignupComponent implements OnInit {
   onSubmit() {
     this.showProgressBar = true;
     const formData = this.signupForm.value;
-    const hospital: Hospital = new Hospital(
-      formData.hospitalName,
+    const parent: Hospital = new Hospital(
+      formData.parentName,
       formData.password,
       formData.address,
-      formData.phoneNumber
+      formData.phoneNo
     );
 
-    this.hospitalService.saveHospital(hospital).subscribe(
+    this.parentService.saveParent(parent).subscribe(
       (data) => {
         console.log('Parent saved successfully:', data);
         this.showProgressBar = false;
-        this.router.navigate(['/login', { cardType: 'hospital' }]);
+        this.router.navigate(['/login', { cardType: 'parent' }]);
 
       },
       (error) => {

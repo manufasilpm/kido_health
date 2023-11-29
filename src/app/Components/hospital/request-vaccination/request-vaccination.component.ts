@@ -59,6 +59,7 @@ export class RequestVaccinationComponent implements OnInit {
       formData.agelevel,
       formData.company,
       formData.description,
+      "Pending"
     );
 
     this.vaccineService.requestVaccine(vaccine).subscribe(

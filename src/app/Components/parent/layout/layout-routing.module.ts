@@ -12,6 +12,10 @@ const routes: Routes = [
                 path: 'dashboard',
                 loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule)
             },
+            {
+                path: 'viewBookings',
+                loadChildren: () => import('./view-bookings/view-bookings.module').then((m) => m.ViewBookingModule)
+            },
             { path: 'tables', loadChildren: () => import('./tables/tables.module').then((m) => m.TablesModule) },
             { path: 'forms', loadChildren: () => import('./form/form.module').then((m) => m.FormModule) },
             {

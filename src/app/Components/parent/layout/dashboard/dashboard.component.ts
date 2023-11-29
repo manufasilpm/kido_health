@@ -93,7 +93,7 @@ export class DashboardComponent implements OnInit {
     
 
     viewBookings() {
-        this.router.navigate(["/parentViewBookings"])
+        this.router.navigateByUrl("/parentHome/bookings")
     }
    
 }

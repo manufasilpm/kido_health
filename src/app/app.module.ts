@@ -33,15 +33,19 @@ import { MessageService } from 'primeng/api';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
+import { MatIconModule } from '@angular/material/icon';
+
 import { HospitalDashboardComponent } from './Components/hospital/hospital-dashboard/hospital-dashboard.component';
 import { BookingPopUpComponent } from './Components/parent/booking-pop-up/booking-pop-up.component';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthGuard } from './shared/guard/auth.guard';
-import { ViewBookingsComponent } from './Components/parent/view-bookings/view-bookings.component';
 import { HeaderComponent } from './Components/parent/parent-view-child/header/header.component';
 import { FormsModule } from '@angular/forms';
 import { RequestVaccinationComponent } from './Components/hospital/request-vaccination/request-vaccination.component';
 import { ConfirmDialogComponent } from './Components/hospital/confirm-dialog/confirm-dialog.component';
+import { AdminConfirmDialogComponent } from './Components/admin/confirm-dialog/confirm-dialog.component';
+import { AddVaccinationComponent } from './Components/admin/add-vaccination/add-vaccination.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,10 +58,11 @@ import { ConfirmDialogComponent } from './Components/hospital/confirm-dialog/con
     ChildCreationComponent,
     HospitalDashboardComponent,
     BookingPopUpComponent,
-    ViewBookingsComponent,
     HeaderComponent,
     RequestVaccinationComponent,
-    ConfirmDialogComponent
+    AddVaccinationComponent,
+    ConfirmDialogComponent,
+    AdminConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +70,7 @@ import { ConfirmDialogComponent } from './Components/hospital/confirm-dialog/con
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ToastrModule,
+  
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,

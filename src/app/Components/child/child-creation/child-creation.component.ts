@@ -11,13 +11,16 @@ import { formatDate } from '@angular/common';
 })
 export class ChildCreationComponent implements OnInit {
   form!: FormGroup;
+  maxDate:Date | undefined;
 
   constructor(
     private fb: FormBuilder,
     private childService: ChildService,
     public dialogRef: MatDialogRef<ChildCreationComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { parentId: string }
-  ) {}
+  ) {
+    this.maxDate=new Date();
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({

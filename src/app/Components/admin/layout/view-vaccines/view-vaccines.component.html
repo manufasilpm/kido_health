@@ -1,0 +1,80 @@
+<div [@routerTransition]>
+  <div class="center-box">
+    <div class="container">
+      <div class="row align-items-center">
+        <div>
+          <div class="card">
+          
+            <div class="card-header px-lg-4 ">
+              <div class="row">
+              <div class="col-md-6" style="color: green; font-weight: bold; font-size: 25px;">Vaccines</div>
+              <div class="col-md-6">
+                <label style="color: skyblue;" (click)="addNewVaccine()">+ Add Vaccines</label>
+            </div>
+            </div>
+            <div class="card-body ">
+              <div>
+                <div>
+                  <div class="card-body">
+
+                    <div class="table-responsive">
+                      <div class="mat-elevation-z6 main-container">
+
+                        <table mat-table [dataSource]="vaccines" class="ng-container">
+                         
+                          <ng-container matColumnDef="slNo"  >
+                            <th mat-header-cell *matHeaderCellDef > Sl No </th>
+                            <td  mat-cell *matCellDef="let child; let i = index"> {{ i + 1 }}</td>
+                          </ng-container>
+                          <!-- Child Name Column -->
+                          <ng-container matColumnDef="name" class="table-row">
+                            <th mat-header-cell *matHeaderCellDef> Vaccine Name </th>
+                            <td mat-cell *matCellDef="let vaccines"> {{vaccines.vaccineName}} </td>
+                          </ng-container>
+
+                          <!-- Child DOB Column -->
+                          <ng-container matColumnDef="company" class="table-row">
+                            <th mat-header-cell *matHeaderCellDef> Company </th>
+                            <td mat-cell *matCellDef="let vaccines"> {{vaccines.company}} </td>
+                          </ng-container>
+
+                          <!-- Last Vaccinated Date Column -->
+                          <ng-container matColumnDef="description" class="table-row">
+                            <th mat-header-cell *matHeaderCellDef> Description</th>
+                            <td mat-cell *matCellDef="let vaccines"> {{vaccines.description}} </td>
+                          </ng-container>
+
+                           <!-- Last Vaccinated Date Column -->
+                           <ng-container matColumnDef="status" class="table-row">
+                            <th mat-header-cell *matHeaderCellDef> Status </th>
+                            <td mat-cell *matCellDef="let vaccines" [style.color]="( vaccines.status=='Pending') ? 'red' : 'green'"> {{vaccines.status}}</td>
+                          </ng-container>
+
+                           <!-- Last Vaccinated Date Column -->
+                           <ng-container matColumnDef="delete" class="table-row">
+                            <td mat-cell *matCellDef="let element">
+                              <mat-icon style="color: red;" (click)="onDelete(element)">delete</mat-icon>
+                            </td>
+                          </ng-container>
+
+                          <tr mat-header-row 
+                            *matHeaderRowDef="['slNo', 'name','company', 'description', 'status']"></tr>
+                          <tr mat-row class="row-content" 
+                            *matRowDef="let row; columns: ['slNo', 'name','company', 'description', 'status','delete'];"
+                            (click)="onRowClick(row)">
+                          </tr>
+
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer px-lg-5 py-lg-4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

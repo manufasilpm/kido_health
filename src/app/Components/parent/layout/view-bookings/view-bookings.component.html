@@ -1,0 +1,73 @@
+<div [@routerTransition]>
+  <div class="center-box">
+    <div class="container">
+      <div class="row align-items-center">
+        <div>
+          <div class="card">
+            <div class="card-header px-lg-4 ">
+              <div class="row">
+                <div class="col-md-6" style="color: green; font-weight: bold; font-size: 25px;">Bookings</div>
+              </div>
+            </div>
+            <div class="card-body ">
+              <div>
+                <div>
+                  <div class="card-body">
+
+                    <div class="table-responsive">
+                      <div class="mat-elevation-z8 main-container">
+
+                        <table mat-table [dataSource]="children">
+                          <!-- Sl No Column -->
+                          <ng-container matColumnDef="slNo">
+                            <th mat-header-cell *matHeaderCellDef> Sl No </th>
+                            <td mat-cell *matCellDef="let child; let i = index"> {{ i + 1 }}</td>
+                          </ng-container>
+
+                          <!-- Child Name Column -->
+                          <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef> Child Name </th>
+                            <td mat-cell *matCellDef="let child"> {{child.name}} </td>
+                          </ng-container>
+
+
+
+                          <!-- Child DOB Column -->
+                          <ng-container matColumnDef="dob">
+                            <th mat-header-cell *matHeaderCellDef> Child DOB </th>
+                            <td mat-cell *matCellDef="let child"> {{child.dob}} </td>
+                          </ng-container>
+
+                          <!-- Last Vaccinated Date Column -->
+                          <ng-container matColumnDef="lastVaccinated">
+                            <th mat-header-cell *matHeaderCellDef> Last Vaccinated Date </th>
+                            <td mat-cell *matCellDef="let child"> {{child.lastVaccinated}} </td>
+                          </ng-container>
+
+                          <!-- Book Appointment Column -->
+                          <ng-container matColumnDef="bookAppointment">
+                            <th mat-header-cell *matHeaderCellDef> Actions </th>
+                            <td mat-cell *matCellDef="let child">
+                              <button mat-button (click)="openBookingForm(child.name,child.id)">View Bookings</button>
+                            </td>
+                          </ng-container>
+
+                          <tr mat-header-row 
+                            *matHeaderRowDef="['slNo', 'name','dob', 'lastVaccinated', 'bookAppointment']"></tr>
+                          <tr mat-row  class="row-content" 
+                            *matRowDef="let row; columns: ['slNo', 'name', 'dob', 'lastVaccinated', 'bookAppointment'];">
+                          </tr>
+
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
