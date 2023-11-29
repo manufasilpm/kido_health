@@ -38,5 +38,11 @@ export class ChildService {
     );
   }
 
+  getChildCountByParentId(parentId:number):Observable<number>{
+
+    const url = `${this.apiUrlchild}/count?parent_id=${parentId}`;
+    return this.http.get<number>(url);
+
+  }
   
 }

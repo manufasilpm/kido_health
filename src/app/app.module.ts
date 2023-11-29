@@ -65,7 +65,7 @@ import { ConfirmDialogComponent } from './Components/hospital/confirm-dialog/con
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-  
+    ToastrModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
@@ -75,6 +75,7 @@ import { ConfirmDialogComponent } from './Components/hospital/confirm-dialog/con
     HttpClientModule,
     MatProgressBarModule,
     MessagesModule,
+    ToastrModule.forRoot(), 
     MatTableModule,
     MatRadioModule ,
     MatDatepickerModule,

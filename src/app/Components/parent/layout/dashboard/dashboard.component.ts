@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../../../router.animations';
 import { Router } from '@angular/router';
+import { ChildService } from 'src/app/services/child/child.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -13,7 +14,11 @@ export class DashboardComponent implements OnInit {
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
 
-    constructor(private router: Router) {
+    childCount!:number;
+    
+     parentId:string|null='';
+
+    constructor(private router: Router,private childService:ChildService) {
         this.sliders.push(
             {
                 imagePath: 'assets/slider1.jpeg',
@@ -31,6 +36,7 @@ export class DashboardComponent implements OnInit {
                 text: 'Vaccination is our collective firebreak when outbreaks happen.'
             }
         );
+
 
         this.alerts.push(
             {
@@ -53,19 +59,43 @@ export class DashboardComponent implements OnInit {
         );
     }
     ngOnInit(): void {
+        this.parentId=(localStorage.getItem('user_id'));
+        this.getchildcount()
+
         
     }
     viewChild() {
             this.router.navigate(["/parentViewChild"])
     }
 
+    getchildcount(): void {
+        if (this.parentId !== null) {
+          
+          const parentIdAsNumber: number = parseInt(this.parentId, 10);
+      
+          
+          this.childService.getChildCountByParentId(parentIdAsNumber)
+            .subscribe(
+              (count: number) => {
+                this.childCount = count;
+              },
+              (error) => {
+                console.error('Error fetching child count:', error);
+               
+              }
+            );
+        } else {
+          console.error('Parent ID is null'); // Handle the case where parentId is null
+          
+        }
+      }
+
+    
+
     viewBookings() {
         this.router.navigate(["/parentViewBookings"])
     }
-    // ngOnInit() {}
-
-    // public closeAlert(alert: any) {
-    //     const index: number = this.alerts.indexOf(alert);
-    //     this.alerts.splice(index, 1);
-    // }
+   
 }
+
+

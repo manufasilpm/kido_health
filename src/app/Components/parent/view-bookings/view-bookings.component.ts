@@ -36,6 +36,7 @@ export class ViewBookingsComponent implements OnInit {
   
 
     const userId: string | null = localStorage.getItem('user_id');
+console.log(userId);
 
     this.childService.getChildBookingsByParentId(userId!).subscribe(
       (data) => {
@@ -47,41 +48,30 @@ export class ViewBookingsComponent implements OnInit {
     );
   }
 
-  openForm() {
-    const dialogRef = this.dialog.open(ChildCreationComponent, {
-      width: '400px',
-      data: { parentId: this.parent_Id }, // Pass the parent ID to ChildCreationComponent
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      this.refreshTable();
-      console.log('The dialog was closed');
-    });
-  }
-  openBookingForm(childName: string, childId: number) {
-    console.log(childId, 'hey ');
+  // openForm() {
+  //   const dialogRef = this.dialog.open(ChildCreationComponent, {
+  //     width: '400px',
+  //     data: { parentId: this.parent_Id }, // Pass the parent ID to ChildCreationComponent
+  //   });
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     this.refreshTable();
+  //     console.log('The dialog was closed');
+  //   });
+  // }
+  
 
-    const dialogRef = this.dialog.open(BookingPopUpComponent, {
-      width: '400px',
-      data: { childName: childName, childId: childId },
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      this.refreshTable();
-      console.log('The dialog was closed');
-    });
-  }
+  // private refreshTable() {
+  //   const userId: string | null = localStorage.getItem('user_id');
 
-  private refreshTable() {
-    const userId: string | null = localStorage.getItem('user_id');
-
-    this.childService.getChildrenByParentId(userId!).subscribe(
-      (data) => {
-        this.children = data;
-        // Trigger change detection
-        this.cdr.detectChanges();
-      },
-      (error) => {
-        console.error('Error getting children:', error);
-      }
-    );
-  }
+  //   this.childService.getChildrenByParentId(userId!).subscribe(
+  //     (data) => {
+  //       this.children = data;
+  //       // Trigger change detection
+  //       this.cdr.detectChanges();
+  //     },
+  //     (error) => {
+  //       console.error('Error getting children:', error);
+  //     }
+  //   );
+  // }
 }

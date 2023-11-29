@@ -11,7 +11,7 @@ import { BookingService } from 'src/app/services/booking/booking.service';
 import { ChildCreationComponent } from '../../child/child-creation/child-creation.component';
 import { Hospital } from 'src/app/models/Hospital';
 import { Vaccine } from 'src/app/models/Vaccine';
-import { Toast } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { Appointment } from 'src/app/models/Appointment';
 
 @Component({
@@ -65,6 +65,7 @@ export class BookingPopUpComponent implements OnInit {
           this.dialogRef.close();
         },
         (error) => {
+          this.showSuccess();
           console.error('Error saving child:', error);
          
         }
@@ -112,6 +113,8 @@ export class BookingPopUpComponent implements OnInit {
         }
       },
       (error) => {
+        
+        
         console.error('Error fetching hospitals:', error);
       }
     );
@@ -145,13 +148,19 @@ export class BookingPopUpComponent implements OnInit {
           this.dayString = 'Invalid day';
       }
     }
+    showSuccess() {
+      
+      
+      this.toastr.error('Child already added ');
+    }
 
     constructor(
       private fb: FormBuilder,
       private bookingService: BookingService,
       public dialogRef: MatDialogRef<BookingPopUpComponent>,
       private dialog: MatDialog,
-      @Inject(MAT_DIALOG_DATA) public data: { parentId: string ,childName: string,childId:number}
+      @Inject(MAT_DIALOG_DATA) public data: { parentId: string ,childName: string,childId:number},
+      private toastr: ToastrService
     ) {
       console.log(this.form);
     }

@@ -7,7 +7,7 @@
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <mat-form-field>
           <mat-label>Hospital Name:</mat-label>
-          <input matInput formControlName="parentName" required>
+          <input matInput formControlName="hospitalName" required>
         </mat-form-field>
   
         <mat-form-field>
@@ -20,7 +20,7 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Phone Number:</mat-label>
-          <input matInput formControlName="phoneNo" required pattern="^\d{10}$">
+          <input matInput formControlName="phoneNumber" required pattern="^\d{10}$">
         </mat-form-field>
         <br>
   

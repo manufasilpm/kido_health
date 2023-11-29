@@ -21,7 +21,7 @@
     <hr />
     <div class="row">
         <div class="col-xl-3 col-lg-6" (click)="viewChild()" >
-            <app-stat [bgClass]="'primary'" [count]="26" [icon]="'fa fa-heartbeat'" [label]="'View Childs'"></app-stat>
+            <app-stat [bgClass]="'primary'" [count]='childCount' [icon]="'fa fa-heartbeat'" [label]="'View Childs'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
             <app-stat [bgClass]="'warning'" [count]="12" [icon]="'fa-tasks'" [label]="'New Vaccine Request'"></app-stat>

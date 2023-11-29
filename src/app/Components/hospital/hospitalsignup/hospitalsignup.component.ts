@@ -16,7 +16,7 @@ export class HospitalsignupComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private parentService: HospitalService,
+    private hospitalService: HospitalService,
     private router:Router
   ) {}
 
@@ -25,7 +25,7 @@ export class HospitalsignupComponent implements OnInit {
   }
   initForm(): void {
     this.signupForm = this.fb.group({
-      parentName: ['', Validators.required],
+      hospitalName: ['', Validators.required],
       password: [
         '',
         [
@@ -35,42 +35,42 @@ export class HospitalsignupComponent implements OnInit {
         ],
       ],
       address: ['', [Validators.minLength(8), Validators.required]],
-      phoneNo: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
     });
   }
 
   onSubmit() {
-    // this.showProgressBar = true;
-    // const formData = this.signupForm.value;
-    // const parent: Hospital = new Hospital(
-    //   formData.parentName,
-    //   formData.password,
-    //   formData.address,
-    //   formData.phoneNo
-    // );
+    this.showProgressBar = true;
+    const formData = this.signupForm.value;
+    const hospital: Hospital = new Hospital(
+      formData.hospitalName,
+      formData.password,
+      formData.address,
+      formData.phoneNumber
+    );
 
-    // this.parentService.saveParent(parent).subscribe(
-    //   (data) => {
-    //     console.log('Parent saved successfully:', data);
-    //     this.showProgressBar = false;
-    //     this.router.navigate(['/login', { cardType: 'parent' }]);
+    this.hospitalService.saveHospital(hospital).subscribe(
+      (data) => {
+        console.log('Parent saved successfully:', data);
+        this.showProgressBar = false;
+        this.router.navigate(['/login', { cardType: 'hospital' }]);
 
-    //   },
-    //   (error) => {
-    //     console.error('Error saving parent:', error);
-    //     this.showProgressBar = false;
+      },
+      (error) => {
+        console.error('Error saving parent:', error);
+        this.showProgressBar = false;
 
-    //     if (
-    //       error.error &&
-    //       error.error === 'Phone number already exists'
-    //     ) {
-    //       this.errorMessage =
-    //         'Phone number already exists. Please choose a different phone number.';
-    //     } else {
-    //       this.errorMessage =
-    //         'An unexpected error occurred. Please try again later.';
-    //     }
-    //   }
-    // );
+        if (
+          error.error &&
+          error.error === 'Phone number already exists'
+        ) {
+          this.errorMessage =
+            'Phone number already exists. Please choose a different phone number.';
+        } else {
+          this.errorMessage =
+            'An unexpected error occurred. Please try again later.';
+        }
+      }
+    );
   }
 }

@@ -20,7 +20,7 @@
     <mat-form-field>
       <mat-label>Select Hospital</mat-label>
       <mat-select formControlName="hospitalName">
-        <mat-option *ngFor="let hospital of hospitals" [value]="hospital.id">
+        <mat-option *ngFor="let hospital of hospitals" [value]="hospital.hospitalId">
           {{ hospital.hospitalName }}
         </mat-option>
       </mat-select>
