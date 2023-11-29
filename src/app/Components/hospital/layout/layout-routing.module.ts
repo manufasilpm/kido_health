@@ -16,6 +16,10 @@ const routes: Routes = [
                 path: 'viewBookings',
                 loadChildren: () => import('./view-bookings/view-bookings.module').then((m) => m.ViewBookingModule)
             },
+            {
+                path: 'manageSlots',
+                loadChildren: () => import('./manage-slot/manage-slot.module').then((m) => m.ManageSlotModule)
+            },
             { path: 'tables', loadChildren: () => import('./tables/tables.module').then((m) => m.TablesModule) },
             { path: 'forms', loadChildren: () => import('./form/form.module').then((m) => m.FormModule) },
             {

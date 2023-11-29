@@ -9,11 +9,12 @@ import { Router } from '@angular/router';
     animations: [routerTransition()]
 })
 export class DashboardComponent implements OnInit {
+   
 
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
 
-    constructor(private router:Router) {
+    constructor(private router: Router) {
         this.sliders.push(
             {
                 imagePath: 'assets/hospital1.png',
@@ -32,16 +33,19 @@ export class DashboardComponent implements OnInit {
             }
         );
 
-       
+
     }
     ngOnInit(): void {
     }
     requestVaccine() {
-            this.router.navigateByUrl("/requestVaccine")
+        this.router.navigateByUrl("/requestVaccine")
     }
-    
+
     viewBookings() {
-            this.router.navigateByUrl("/hospitalDashboard/bookings")
+        this.router.navigateByUrl("/hospitalDashboard/bookings")
+    }
+    mangeSlot() {
+        this.router.navigateByUrl("/hospitalDashboard/mangeSlot")
     }
     // ngOnInit() {}
 

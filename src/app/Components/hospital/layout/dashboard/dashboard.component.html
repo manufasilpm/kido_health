@@ -24,7 +24,7 @@
             <app-stat [bgClass]="'primary'" [count]="26" [icon]="'fa fa-heartbeat'" [label]="'Vaccine Records'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6" (click)="requestVaccine()">
-            <app-stat [bgClass]="'warning'" [count]="12" [icon]="'fa-tasks'" [label]="'New Vaccine Request'"></app-stat>
+            <app-stat [bgClass]="'warning'" [count]="12" [icon]="'fa-tasks'" [label]="'Add New Vaccine'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6" (click)="viewBookings()">
             <app-stat
@@ -34,7 +34,7 @@
                 [label]="'Bookings'"
             ></app-stat>
         </div>
-        <div class="col-xl-3 col-lg-6">
+        <div class="col-xl-3 col-lg-6" (click)="mangeSlot()">
             <app-stat [bgClass]="'danger'" [count]="13" [icon]="'fa fa-calendar'" [label]="'Slot'"></app-stat>
         </div>
     </div>
@@ -43,7 +43,7 @@
         alert.message
     }}</ngb-alert> -->
     <hr />
-    <div class="row">
+    <div class="row" >
         <div class="col-lg-8">
             <div class="card card-default">
                 <div class="card-header"><i class="fa fa-clock-o fa-fw"></i> Responsive Timeline</div>

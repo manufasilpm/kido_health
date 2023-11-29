@@ -1,0 +1,100 @@
+<div [@routerTransition]>
+  <div class="center-box">
+    <div class="container">
+      <div class="row align-items-center">
+        <div>
+          <div class="card">
+            <div class="card-header px-lg-4 ">
+              <div class="row">
+                <div class="col-md-6" style="color: green; font-weight: bold; font-size: 25px;">Slot Management</div>
+                
+              </div>
+            </div>
+            <div class="card-body ">
+              <div>
+                <div>
+                  <div class="card-body">
+
+                    <div class="table-responsive">
+
+                      <form id="timeSlotsForm" (submit)="updateSlot()">
+                        <div class="day-time">
+                          <label for="monday">Monday:</label>
+                          <div>
+                            <input placeholder="From" id="mondayFrom" name="mondayFrom[]">
+                            <span> - </span>
+                            <input placeholder="To" id="mondayTo" name="mondayTo[]">
+                          </div>
+                        </div>
+                    
+                        <div class="day-time">
+                          <label for="tuesday">Tuesday:</label>
+                          <div>
+                            <input  placeholder="From" id="tuesdayFrom" name="tuesdayFrom[]">
+                            <span> - </span>
+                            <input  placeholder="To"id="tuesdayTo" name="tuesdayTo[]">
+                          </div>
+                        </div>
+                    
+                        <div class="day-time">
+                          <label for="wednesday">Wednesday:</label>
+                          <div>
+                            <input  placeholder="From"  id="wednesdayFrom" name="wednesdayFrom[]">
+                            <span> - </span>
+                            <input  placeholder="To" id="wednesdayTo" name="wednesdayTo[]">
+                          </div>
+                        </div>
+                    
+                        <div class="day-time">
+                          <label for="thursday">Thursday:</label>
+                          <div>
+                            <input  placeholder="From"  id="thursdayFrom" name="thursdayFrom[]">
+                            <span> - </span>
+                            <input  placeholder="To" id="thursdayTo" name="thursdayTo[]">
+                          </div>
+                        </div>
+                    
+                        <div class="day-time">
+                          <label for="friday">Friday:</label>
+                          <div>
+                            <input  placeholder="From"  id="fridayFrom" name="fridayFrom[]">
+                            <span> - </span>
+                            <input  placeholder="To" id="fridayTo" name="fridayTo[]">
+                          </div>
+                        </div>
+                    
+                        <div class="day-time">
+                          <label for="saturday">Saturday:</label>
+                          <div>
+                            <input  placeholder="From"  id="saturdayFrom" name="saturdayFrom[]">
+                            <span> - </span>
+                            <input  placeholder="To" id="saturdayTo" name="saturdayTo[]">
+                          </div>
+                        </div>
+                    
+                        <div class="day-time">
+                          <label for="sunday">Sunday:</label>
+                          <div>
+                            <input  placeholder="From"  id="sundayFrom" name="sundayFrom[]">
+                            <span> - </span>
+                            <input  placeholder="To"  id="sundayTo" name="sundayTo[]">
+                          </div>
+                        </div>
+                    
+                        <button type="button" onclick="submitTimeSlots()">Submit</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer px-lg-5 py-lg-4">
+              <div class="text-sm text-muted">Update the booking status as per the completion.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
