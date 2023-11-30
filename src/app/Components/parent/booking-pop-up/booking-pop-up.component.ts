@@ -27,52 +27,48 @@ export class BookingPopUpComponent implements OnInit {
   hospitals: Hospital[] = [];
   vaccines: Vaccine[] = [];
   myDate!: number;
-  day!:number;
+  day!: number;
   dayString!: string;
-
-  
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      childName: [{ value: this.data.childName, disabled: true }, Validators.required],
-      hospitalName: [ Validators.required],
-      vaccineName: [ Validators.required],
-      vaccinationdate: [    Validators.required],
+      childName: [
+        { value: this.data.childName, disabled: true },
+        Validators.required,
+      ],
+      hospitalName: [Validators.required],
+      vaccineName: [Validators.required],
+      vaccinationdate: [Validators.required],
     });
 
     // this.getHospitals();
     this.getVaccines();
   }
 
-
   onSubmit() {
     if (this.form.valid) {
-
       const formData = this.form.value;
       const appointment: Appointment = new Appointment(
         formData.hospitalName,
         formData.vaccineName,
-        formData.vaccinationdate  // Corrected property name
+        formData.vaccinationdate // Corrected property name
       );
       const appointmentDate = formData.vaccinationdate;
       this.day = appointmentDate.getDay();
       console.log('Child ID:', this.data.childId);
 
-
-      this.bookingService.saveAppointment(this.data.childId,appointment).subscribe(
-        (data) => {
-          console.log('Child saved successfully:', data);
-          this.dialogRef.close();
-        },
-        (error) => {
-          console.error('Error saving child:', error);
-         
-        }
-      )
-      
-      
-    
-      }
+      this.bookingService
+        .saveAppointment(this.data.childId, appointment)
+        .subscribe(
+          (data) => {
+            console.log('Child saved successfully:', data);
+            this.dialogRef.close();
+          },
+          (error) => {
+            console.error('Error saving child:', error);
+          }
+        );
+    }
   }
 
   openForm() {
@@ -86,79 +82,76 @@ export class BookingPopUpComponent implements OnInit {
   }
 
   getVaccines() {
-    this.bookingService.getVaccinesList().subscribe( (response) => {
-      this.vaccines = response; // Assuming your service returns an array of hospitals
-    },
-    (error) => {
-      console.error('Error fetching hospitals:', error);
-    })
-  }
-
- getHospitals() {
-  if (this.form.get('vaccinationdate')?.value) {
-    const selectedDate: Date = this.form.get('vaccinationdate')!.value;
-    this.day = selectedDate.getDay();
-    console.log(this.day);
-    this.getDayFromDate(this.day);
-    this.bookingService.getHospitalsByDay(this.dayString).subscribe(
+    this.bookingService.getVaccinesList().subscribe(
       (response) => {
-        if (response) {
-          const uniqueHospitals = Array.from(new Set(response.map(item => item.hospital)));
-          console.log(uniqueHospitals);
-          this.hospitals = uniqueHospitals;
-         
-        } else {
-          console.error('Response array is undefined or null.');
-        }
+        this.vaccines = response; // Assuming your service returns an array of hospitals
       },
       (error) => {
         console.error('Error fetching hospitals:', error);
       }
     );
   }
-    }
-    getDayFromDate(day:number){
 
-      switch (this.day) {
-        case 0:
-          this.dayString = 'SUNDAY';
-          break;
-        case 1:
-          this.dayString = 'MONDAY';
-          break;
-        case 2:
-          this.dayString = 'TUESDAY';
-          break;
-        case 3:
-          this.dayString = 'WEDNESDAY';
-          break;
-        case 4:
-          this.dayString = 'THURSDAY';
-          break;
-        case 5:
-          this.dayString = 'FRIDAY';
-          break;
-        case 6:
-          this.dayString = 'SATURDAY';
-          break;
-        default:
-          this.dayString = 'Invalid day';
-      }
-    }
-
-    constructor(
-      private fb: FormBuilder,
-      private bookingService: BookingService,
-      public dialogRef: MatDialogRef<BookingPopUpComponent>,
-      private dialog: MatDialog,
-      @Inject(MAT_DIALOG_DATA) public data: { parentId: string ,childName: string,childId:number}
-    ) {
-      console.log(this.form);
+  getHospitals() {
+    if (this.form.get('vaccinationdate')?.value) {
+      const selectedDate: Date = this.form.get('vaccinationdate')!.value;
+      this.day = selectedDate.getDay();
+      console.log(this.day);
+      this.getDayFromDate(this.day);
+      this.bookingService.getHospitalsByDay(this.dayString).subscribe(
+        (response) => {
+          if (response) {
+            const uniqueHospitals = Array.from(
+              new Set(response.map((item) => item.hospital))
+            );
+            console.log(uniqueHospitals);
+            this.hospitals = uniqueHospitals;
+          } else {
+            console.error('Response array is undefined or null.');
+          }
+        },
+        (error) => {
+          console.error('Error fetching hospitals:', error);
+        }
+      );
     }
   }
-  
-  
+  getDayFromDate(day: number) {
+    switch (this.day) {
+      case 0:
+        this.dayString = 'SUNDAY';
+        break;
+      case 1:
+        this.dayString = 'MONDAY';
+        break;
+      case 2:
+        this.dayString = 'TUESDAY';
+        break;
+      case 3:
+        this.dayString = 'WEDNESDAY';
+        break;
+      case 4:
+        this.dayString = 'THURSDAY';
+        break;
+      case 5:
+        this.dayString = 'FRIDAY';
+        break;
+      case 6:
+        this.dayString = 'SATURDAY';
+        break;
+      default:
+        this.dayString = 'Invalid day';
+    }
+  }
 
-  
-
-
+  constructor(
+    private fb: FormBuilder,
+    private bookingService: BookingService,
+    public dialogRef: MatDialogRef<BookingPopUpComponent>,
+    private dialog: MatDialog,
+    @Inject(MAT_DIALOG_DATA)
+    public data: { parentId: string; childName: string; childId: number }
+  ) {
+    console.log(this.form);
+  }
+}

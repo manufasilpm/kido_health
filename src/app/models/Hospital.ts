@@ -1,5 +1,5 @@
 export class Hospital {
-  id?: number; // Add "?" to make it optional if it's not always present during creation
+  hospitalId?: number; // Add "?" to make it optional if it's not always present during creation
   hospitalName: string;
     password: string;
     address: string;
