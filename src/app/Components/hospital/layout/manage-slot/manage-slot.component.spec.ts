@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ManageSlotComponent } from './manage-slot.component';
 
-describe('ViewBookingsComponent', () => {
+describe('ManageSlotComponent', () => {
   let component: ManageSlotComponent;
   let fixture: ComponentFixture<ManageSlotComponent>;
 

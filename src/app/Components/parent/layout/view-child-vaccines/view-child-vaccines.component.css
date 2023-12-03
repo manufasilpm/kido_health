@@ -1,72 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&amp;display=swap");
+body {
+  padding: 20px;
+}
 
+/* Change text color of <th> in the ng-container */
+.ng-container th {
+  font-weight: bold;
+  font-size: 15px;
+  color: black; /* Change this to your desired color */
+}
 
-    /* Some basic styling */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 20px;
-    }
+/* Change text color of <td> in the ng-container */
+.ng-container td {
+  color: black; /* Change this to your desired color */
+}
 
-    h2 {
-      text-align: center;
-    }
-
-    form {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    label {
-      font-weight: 450;
-      display: block;
-      margin-bottom: 10px; /* Increased margin */
-      width: 80px; /* Fixed width for labels */
-    }
-    
-    .day-time {
-      display: flex;
-      align-items: center;
-      gap: 20px; /* Increased gap */
-      margin-bottom: 15px;
-    }
-
-    input[type="time"] {
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      flex: 1; /* Fill remaining space */
-    }
-
-    span {
-      font-weight: bold;
-    }
-
-    button {
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    .update-btn{
-      margin-left: 10px;
-      padding: 5px 5px 5px 5px;
-      background-color: #824caf;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
+table {
+  width: 100%;
+}
+.row-content:hover {
+  background-color: rgb(238, 245, 247); /* Change this to your desired hover effect */
+  /* Add any other styling for hover effect */
+}
 .card-header:first-child {
   .body{
     background-color: rgb(178, 234, 224);
@@ -153,4 +108,3 @@
     text-decoration: underline!important;
     cursor: pointer;
     }
-

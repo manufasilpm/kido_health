@@ -16,6 +16,10 @@ const routes: Routes = [
                 path: 'viewBookings',
                 loadChildren: () => import('./view-bookings/view-bookings.module').then((m) => m.ViewBookingModule)
             },
+            {
+                path: 'viewChildVaccines',
+                loadChildren: () => import('./view-child-vaccines/view-child-vaccines.module').then((m) => m.ViewChildVaccinesModule)
+            },
             { path: 'tables', loadChildren: () => import('./tables/tables.module').then((m) => m.TablesModule) },
             { path: 'forms', loadChildren: () => import('./form/form.module').then((m) => m.FormModule) },
             {

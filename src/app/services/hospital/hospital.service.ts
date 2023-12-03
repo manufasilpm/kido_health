@@ -8,7 +8,7 @@ import { Hospital } from 'src/app/models/Hospital';
 })
 export class HospitalService {
 
-  private baseUrl = 'http://localhost:9090/Hospital'; // Replace with your actual backend URL
+  private baseUrl = 'http://localhost:9090/Hospital'; 
 
   constructor(private http: HttpClient) {}
 

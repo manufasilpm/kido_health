@@ -5,7 +5,8 @@ import {
   MAT_DIALOG_DATA,
   MatDialog,
   MatDialogRef,
-} from '@angular/material/dialog';
+}
+from '@angular/material/dialog';
 import { Child } from 'src/app/models/Child';
 import { BookingService } from 'src/app/services/booking/booking.service';
 import { ChildCreationComponent } from '../../child/child-creation/child-creation.component';
@@ -51,11 +52,12 @@ export class BookingPopUpComponent implements OnInit {
       const appointment: Appointment = new Appointment(
         formData.hospitalName,
         formData.vaccineName,
-        formData.vaccinationdate // Corrected property name
+        formData.vaccinationdate, 
+        "Pending" 
       );
       const appointmentDate = formData.vaccinationdate;
       this.day = appointmentDate.getDay();
-      console.log('Child ID:', this.data.childId);
+      console.log('Child ID:', appointment);
 
       this.bookingService
         .saveAppointment(this.data.childId, appointment)

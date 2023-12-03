@@ -29,6 +29,11 @@ export class VaccineService {
 
     return this.http.get<Vaccine[]>(url);
   }
+  getVaccinesByAge(age:number): Observable<Vaccine[]> {
+    const url = `${this.baseUrl}/vaccineByAge/${age}`;
+    console.log(this.http.get<Vaccine[]>(url));
+    return this.http.get<Vaccine[]>(url);
+  }
 
   updateVaccineStatus(vaccine: Vaccine): Observable<Vaccine> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
