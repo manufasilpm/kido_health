@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../../../router.animations';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupListComponent } from '../child-list-popup/child-list-pop-up.component';
+import { Child } from 'src/app/models/Child';
+import { ChildService } from 'src/app/services/child/child.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -10,10 +14,12 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
+
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
+    public childs:Array<Child>=[]
 
-    constructor(private router: Router) {
+    constructor(private router: Router,private dialog:MatDialog,private childService:ChildService) {
         this.sliders.push(
             {
                 imagePath: 'assets/slider1.jpeg',
@@ -53,8 +59,34 @@ export class DashboardComponent implements OnInit {
         );
     }
     ngOnInit(): void {
-        
+        const userId: string | null = localStorage.getItem('user_id');
+
+        this.childService.getChildrenByParentId(userId!).subscribe(
+          (data) => {
+            this.childs = data;
+            console.log(data);
+          },
+          (error) => {
+            console.error('Error getting children:', error);
+          }
+        );
     }
+
+  openPopup() {
+    const dialogRef = this.dialog.open(PopupListComponent, {
+      width: '300px',
+      data: {
+        title: 'CHOOSE YOUR CHILD',
+        items: this.childs // Replace this with your list of items
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      // You can perform actions after the dialog is closed if needed
+    });
+  }
+
     viewChild() {
             this.router.navigate(["/parentViewChild"])
     }

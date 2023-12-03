@@ -45,6 +45,8 @@ import { RequestVaccinationComponent } from './Components/hospital/request-vacci
 import { ConfirmDialogComponent } from './Components/hospital/confirm-dialog/confirm-dialog.component';
 import { AdminConfirmDialogComponent } from './Components/admin/confirm-dialog/confirm-dialog.component';
 import { AddVaccinationComponent } from './Components/admin/add-vaccination/add-vaccination.component';
+import { ManageSlotComponent } from './Components/hospital/layout/manage-slot/manage-slot.component';
+import { PopupListComponent } from './Components/parent/layout/child-list-popup/child-list-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import { AddVaccinationComponent } from './Components/admin/add-vaccination/add-
     RequestVaccinationComponent,
     AddVaccinationComponent,
     ConfirmDialogComponent,
-    AdminConfirmDialogComponent
+    AdminConfirmDialogComponent,
+    PopupListComponent
   ],
   imports: [
     BrowserModule,

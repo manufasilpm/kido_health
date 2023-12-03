@@ -17,72 +17,90 @@
 
                     <div class="table-responsive">
 
-                      <form id="timeSlotsForm" (submit)="updateSlot()">
                         <div class="day-time">
                           <label for="monday">Monday:</label>
                           <div>
-                            <input placeholder="From" id="mondayFrom" name="mondayFrom[]">
+                            <input placeholder="From" [(ngModel)]="mondayFrom"  >
                             <span> - </span>
-                            <input placeholder="To" id="mondayTo" name="mondayTo[]">
+                            <input placeholder="To" [(ngModel)]="mondayTo" >
+                            <span>      Maximum Slot:</span>
+                            <input type="number"  [(ngModel)]="monCount">
+                            <button class="update-btn" type="button"   (click)="updateDay('mon')">UPDATE</button>
                           </div>
                         </div>
                     
                         <div class="day-time">
                           <label for="tuesday">Tuesday:</label>
                           <div>
-                            <input  placeholder="From" id="tuesdayFrom" name="tuesdayFrom[]">
+                            <input  placeholder="From" [(ngModel)]="tueFrom">
                             <span> - </span>
-                            <input  placeholder="To"id="tuesdayTo" name="tuesdayTo[]">
+                            <input  placeholder="To" [(ngModel)]="tueTo">
+                            <span>      Maximum Slot:</span>
+                            <input type="number"  [(ngModel)]="tueCount">
+                            <button class="update-btn" type="button" (click)="updateDay('tue')">UPDATE</button>
                           </div>
                         </div>
                     
                         <div class="day-time">
                           <label for="wednesday">Wednesday:</label>
                           <div>
-                            <input  placeholder="From"  id="wednesdayFrom" name="wednesdayFrom[]">
+                            <input  placeholder="From"  [(ngModel)]="wenFrom">
                             <span> - </span>
-                            <input  placeholder="To" id="wednesdayTo" name="wednesdayTo[]">
+                            <input  placeholder="To" [(ngModel)]="wenTo">
+                            <span>      Maximum Slot:</span>
+                            <input type="number"  [(ngModel)]="wenCount">
+                            <button class="update-btn" type="button" (click)="updateDay('wen')">UPDATE</button>
                           </div>
                         </div>
                     
                         <div class="day-time">
                           <label for="thursday">Thursday:</label>
                           <div>
-                            <input  placeholder="From"  id="thursdayFrom" name="thursdayFrom[]">
+                            <input  placeholder="From"  [(ngModel)]="thuFrom">
                             <span> - </span>
-                            <input  placeholder="To" id="thursdayTo" name="thursdayTo[]">
+                            <input  placeholder="To" [(ngModel)]="thuTo">
+                            <span>      Maximum Slot:</span>
+                            <input type="number"  [(ngModel)]="thuCount">
+                            <button class="update-btn" type="button" (click)="updateDay('thu')">UPDATE</button>
                           </div>
                         </div>
                     
                         <div class="day-time">
                           <label for="friday">Friday:</label>
                           <div>
-                            <input  placeholder="From"  id="fridayFrom" name="fridayFrom[]">
+                            <input  placeholder="From"  [(ngModel)]="friFrom">
                             <span> - </span>
-                            <input  placeholder="To" id="fridayTo" name="fridayTo[]">
+                            <input  placeholder="To" [(ngModel)]="friTo">
+                            <span>      Maximum Slot:</span>
+                            <input type="number"  [(ngModel)]="friCount">
+                            <button class="update-btn" type="button" (click)="updateDay('fri')">UPDATE</button>
                           </div>
                         </div>
                     
                         <div class="day-time">
                           <label for="saturday">Saturday:</label>
                           <div>
-                            <input  placeholder="From"  id="saturdayFrom" name="saturdayFrom[]">
+                            <input  placeholder="From"  [(ngModel)]="satFrom">
                             <span> - </span>
-                            <input  placeholder="To" id="saturdayTo" name="saturdayTo[]">
+                            <input  placeholder="To" [(ngModel)]="satTo">
+                            <span>      Maximum Slot:</span>
+                            <input type="number"  [(ngModel)]="satCount">
+                            <button class="update-btn" type="button" (click)="updateDay('sat')">UPDATE</button>
                           </div>
                         </div>
                     
                         <div class="day-time">
                           <label for="sunday">Sunday:</label>
                           <div>
-                            <input  placeholder="From"  id="sundayFrom" name="sundayFrom[]">
+                            <input  placeholder="From"  [(ngModel)]="sunFrom">
                             <span> - </span>
-                            <input  placeholder="To"  id="sundayTo" name="sundayTo[]">
+                            <input  placeholder="To"  [(ngModel)]="sunTo">
+                            <span>      Maximum Slot:</span>
+                            <input type="number"  [(ngModel)]="sunCount">
+                            <button class="update-btn" type="button" (click)="updateDay('sun')">UPDATE</button>
                           </div>
                         </div>
                     
-                        <button type="button" onclick="submitTimeSlots()">Submit</button>
-                      </form>
                     </div>
                   </div>
                 </div>

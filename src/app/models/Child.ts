@@ -7,6 +7,7 @@ export class Child {
   dob: string;
   parent_id:String;
   childId!:number;
+  id!:number;
 
   constructor(
     name: string,
@@ -14,7 +15,7 @@ export class Child {
     completed_vaccine: string,
     latest_vaccine: string,
     dob: string,
-    parent_id: string,
+    parent_id: string
     
   ) {
     this.name = name;
