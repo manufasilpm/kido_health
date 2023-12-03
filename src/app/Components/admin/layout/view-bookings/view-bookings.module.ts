@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,6 +22,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInputModule,
     MatSortModule,
     MatNativeDateModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   declarations: [AdminViewBookingsComponent],
 })

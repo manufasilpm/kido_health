@@ -45,6 +45,18 @@
                           {{ item.hospital.hospitalName }}
                         </td>
                       </ng-container>
+                      <ng-container matColumnDef="child">
+                        <th mat-header-cell *matHeaderCellDef>Child</th>
+                        <td mat-cell *matCellDef="let item">
+                          {{ item.child.childName }}
+                        </td>
+                      </ng-container>
+                      <ng-container matColumnDef="age">
+                        <th mat-header-cell *matHeaderCellDef>Age</th>
+                        <td mat-cell *matCellDef="let item">
+                          {{ item.child.age }}
+                        </td>
+                      </ng-container>
                       <ng-container matColumnDef="vaccine">
                         <th mat-header-cell *matHeaderCellDef>Vaccine</th>
                         <td mat-cell *matCellDef="let item">
@@ -60,7 +72,7 @@
                       <ng-container matColumnDef="reminder">
                         <th mat-header-cell *matHeaderCellDef>Reminder</th>
                         <td mat-cell *matCellDef="let item">
-                          <button mat-button style="color: white; background-color: blueviolet;" (click)="openBookingForm()">Book Appointment</button>
+                          <button mat-raised-button  (click)="sendReminder(item.child.childId)">Book Appointment</button>
                         </td>
                       </ng-container>
 
