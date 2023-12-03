@@ -12,57 +12,74 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
   styleUrls: ['./view-bookings.component.css']
 })
 export class AdminViewBookingsComponent implements OnInit {
+
   vaccineForm: any;
   errorMessage!: string;
   showProgressBar: boolean = false;
   result: string = '';
   minDate: Date ;
+  dataSource!: any[];
 
- //show hide div variables
- userlogin = true;
- userregister = false;
- //Buttons clicks functionalities 
- user_register()
- {
-   this.userlogin = false;
-   this.userregister = true;
- }
- user_login()
- {
-   this.userlogin = true;
-   this.userregister = false;
- }
+  displayedColumns: string[] = ['hospital', 'vaccine', 'date', 'reminder'];
+
+  // show hide div variables
+  userlogin = true;
+  userregister = false;
+
+  // Buttons clicks functionalities 
+  user_register() {
+    this.userlogin = false;
+    this.userregister = true;
+  }
+
+  user_login() {
+    this.userlogin = true;
+    this.userregister = false;
+  }
+
   constructor(
     private fb: FormBuilder,
     private parentService: HospitalService,
     public dialog: MatDialog,
   ) {
-    this.minDate=new Date()
+    this.minDate = new Date();
+    this.dataSource = this.appointments; // Initialize dataSource here
   }
 
   ngOnInit(): void {
-    this.initForm();
+    // Removed initialization of dataSource from here
   }
-  initForm(): void {
+
+  // Rest of your component...
+
+  appointments = [
+    {
+      id: 5,
+      hospital: {
+        hospitalId: 353,
+        hospitalName: 'mims',
+        location: 'qwertyuiop',
+        phoneNo: '0987654345',
+        password: '123456',
+        vaccine: [],
+      },
+      vaccine: {
+        vaccineId: 2,
+        vaccineName: 'New Vaccine',
+        vaccineCategory: 'child',
+        company: 'abc',
+        description: 'dsdfsffgfg',
+        status: 'approved',
+      },
+      appointmentDate: '2023-11-27T18:30',
+    },
+    // additional appointments
+  ];
+
+
+  openBookingForm() {
+     
+    }
+
    
-  }
-
-  onSubmit() {
-   
-  }
-  confirmDialog(): void {
-    const message = `Are you completed vaccination for this child?`;
-
-    const dialogData = new ConfirmDialogModel("Confirm Action", message);
-
-    const dialogRef = this.dialog.open(AdminConfirmDialogComponent, {
-      width: "350px",
-      height:"250px",
-      data: dialogData
-    });
-
-    dialogRef.afterClosed().subscribe(dialogResult => {
-      this.result = dialogResult;
-    });
-  }
 }
