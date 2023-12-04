@@ -21,6 +21,10 @@ const routes: Routes = [
     {
         path: 'vaccines',
         component: ViewVaccinesComponent
+    },
+    {
+        path: 'reminders',
+        component: ViewVaccinesComponent
     }
 ];
 

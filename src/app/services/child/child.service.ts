@@ -28,6 +28,13 @@ export class ChildService {
     return this.http.get<any[]>(url);
   }
 
+
+  getChildBookingsByChildId(childId: string | undefined): Observable<any[]> {
+    const url = `${this.apiUrlchild}/child-appointments/${childId}`;
+    console.log(this.http.get<any[]>(url));
+    return this.http.get<any[]>(url);
+  }
+
   saveChild(parent_Id: number, parent: Child): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     console.log(parent);

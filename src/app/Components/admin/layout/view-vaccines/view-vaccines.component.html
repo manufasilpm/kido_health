@@ -22,16 +22,16 @@
 
                         <table mat-table [dataSource]="vaccines" class="ng-container">
                          
-                          <ng-container matColumnDef="slNo"  >
-                            <th mat-header-cell *matHeaderCellDef > Sl No </th>
-                            <td  mat-cell *matCellDef="let child; let i = index"> {{ i + 1 }}</td>
-                          </ng-container>
+                         
                           <!-- Child Name Column -->
                           <ng-container matColumnDef="name" class="table-row">
                             <th mat-header-cell *matHeaderCellDef> Vaccine Name </th>
                             <td mat-cell *matCellDef="let vaccines"> {{vaccines.vaccineName}} </td>
                           </ng-container>
-
+                          <ng-container matColumnDef="age"  >
+                            <th mat-header-cell *matHeaderCellDef > Age </th>
+                            <td  mat-cell *matCellDef="let vaccines"> {{ vaccines.vaccineCategory}}</td>
+                          </ng-container>
                           <!-- Child DOB Column -->
                           <ng-container matColumnDef="company" class="table-row">
                             <th mat-header-cell *matHeaderCellDef> Company </th>
@@ -58,9 +58,9 @@
                           </ng-container>
 
                           <tr mat-header-row 
-                            *matHeaderRowDef="['slNo', 'name','company', 'description', 'status']"></tr>
+                            *matHeaderRowDef="[ 'name','age','company', 'description', 'status']"></tr>
                           <tr mat-row class="row-content" 
-                            *matRowDef="let row; columns: ['slNo', 'name','company', 'description', 'status','delete'];"
+                            *matRowDef="let row; columns: [ 'name','age','company', 'description', 'status','delete'];"
                             (click)="onRowClick(row)">
                           </tr>
 

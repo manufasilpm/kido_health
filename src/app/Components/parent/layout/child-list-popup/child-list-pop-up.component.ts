@@ -59,7 +59,7 @@ export class PopupListComponent {
     // Handle item click action here
     console.log('Clicked item:', item);
     // You can emit an event, call a function, or perform any action here
-    this.router.navigate(["parentHome/childVaccines", { child: item.id }])
+    this.router.navigate(["parentHome/childVaccines", { child: item.id ,age:item.age}])
     this.dialogRef.close();
 
   }

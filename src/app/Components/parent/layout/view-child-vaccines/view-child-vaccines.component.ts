@@ -8,6 +8,7 @@ import { VaccineService } from 'src/app/services/vaccine/vaccineservice.service'
 import { ToastrService } from 'ngx-toastr';
 import { AdminConfirmDialogComponent } from 'src/app/Components/admin/confirm-dialog/confirm-dialog.component';
 import { Appointment } from 'src/app/models/Appointment';
+import { ChildService } from 'src/app/services/child/child.service';
 
 @Component({
   selector: 'app-view-vaccines',
@@ -15,7 +16,8 @@ import { Appointment } from 'src/app/models/Appointment';
   styleUrls: ['./view-child-vaccines.component.css']
 })
 export class ViewChildVaccinesComponent implements OnInit {
- 
+  receivedChildId: string | null = '';
+  receivedChildAge: string | null= '';
   username!: string;
   vaccines!: Vaccine[];
   appontment!:Appointment[];
@@ -24,6 +26,7 @@ export class ViewChildVaccinesComponent implements OnInit {
   parent_Id!: string;
   constructor(
     private vaccineService: VaccineService,
+    private childService: ChildService,
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private cdr: ChangeDetectorRef,
@@ -66,6 +69,8 @@ export class ViewChildVaccinesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.receivedChildId = this.route.snapshot.paramMap.get('child');
+    this.receivedChildAge = this.route.snapshot.paramMap.get('age');
     this.route.params.subscribe((params) => {
       this.username = params['username'];
 
@@ -73,8 +78,34 @@ export class ViewChildVaccinesComponent implements OnInit {
 
 
     const userId: string | null = localStorage.getItem('user_id');
-    this.vaccineService.getVaccinesByAge(2).subscribe(
+    this.childService.getChildBookingsByChildId(this.receivedChildId?.toString()).subscribe(
       (data) => {
+        this.appointments = data;
+        console.log(data);
+        this.sortVaccineByAppointmentStatus()
+      },
+      (error) => {
+        console.error('Error getting children:', error);
+      }
+    );
+    
+  }
+
+  sortVaccineByAppointmentStatus(){
+    this.vaccineService.getVaccinesByAge(this.receivedChildAge).subscribe(
+      (data) => {
+        data.forEach(element => {
+          this.appointments.forEach(apns=>{
+            // console.log(element.vaccineId+" "+apns.vaccine.vaccineId+" "+apns);
+            // console.log(apns);
+
+            if(element.vaccineId==apns.vaccine.vaccineId){
+              element.status=apns.status
+            }else{
+                element.status="Pending"
+            }
+          })
+        });
         this.vaccines = data;
 
         // Trigger change detection
@@ -84,16 +115,6 @@ export class ViewChildVaccinesComponent implements OnInit {
         console.error('Error getting children:', error);
       }
     );
-  }
-
-  sortVaccineByAppointmentStatus(){
-    this.vaccines.forEach(element => {
-      this.appointments.forEach(apns=>{
-        if(element.vaccineId==apns.vaccineId){
-          element.status=apns.status
-        }
-      })
-    });
   }
 
 

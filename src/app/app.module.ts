@@ -47,6 +47,7 @@ import { AdminConfirmDialogComponent } from './Components/admin/confirm-dialog/c
 import { AddVaccinationComponent } from './Components/admin/add-vaccination/add-vaccination.component';
 import { ManageSlotComponent } from './Components/hospital/layout/manage-slot/manage-slot.component';
 import { PopupListComponent } from './Components/parent/layout/child-list-popup/child-list-pop-up.component';
+import { DateFormatPipe } from './Components/DateFomatPipe';
 
 @NgModule({
   declarations: [

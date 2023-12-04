@@ -1,6 +1,6 @@
-import { ViewBookingModule } from './view-bookings.module';
+import { ViewBookingModule } from './view-reminders.module';
 
-describe('ViewBookingModule', () => {
+describe('DashboardModule', () => {
     let dashboardModule: ViewBookingModule;
 
     beforeEach(() => {
