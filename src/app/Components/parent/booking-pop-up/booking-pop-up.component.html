@@ -12,10 +12,10 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <input matInput [matDatepicker]="dobPicker" placeholder="Choose date for Vaccination" 
+      <input matInput [matDatepicker]="dobPicker" [min]="minDate" placeholder="Choose date for Vaccination" 
       formControlName="vaccinationdate" (dateInput)="getHospitals()">
-      <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
-      <mat-datepicker #dobPicker></mat-datepicker>
+      <mat-datepicker-toggle matSuffix [for]="dobPicker" ></mat-datepicker-toggle>
+      <mat-datepicker #dobPicker ></mat-datepicker>
     </mat-form-field> 
     <mat-form-field>
       <mat-label>Select Hospital</mat-label>

@@ -9,22 +9,16 @@
                 class="col-md-6"
                 style="color: green; font-weight: bold; font-size: 25px"
               >
-                Bookings
+                Send Reminders
               </div>
               <div class="col-md-6">
-                <mat-form-field>
-                  <input
-                    matInput
-                    [matDatepicker]="dobPicker"
-                    [min]="minDate"
-                    placeholder="Choose date for Vaccination"
-                    formControlName="vaccinationDate"
-                  />
-                  <mat-datepicker-toggle
-                    matSuffix
-                    [for]="dobPicker"
-                  ></mat-datepicker-toggle>
-                  <mat-datepicker #dobPicker></mat-datepicker>
+                <mat-form-field appearance="fill">
+                  <mat-label>Select Age</mat-label>
+                  <mat-select [(value)]="selectedAge" >
+                    <mat-option *ngFor="let age of ages" [value]="age" (click)="onSelectionChange()">
+                      {{ age }}
+                    </mat-option>
+                  </mat-select>
                 </mat-form-field>
               </div>
             </div>
@@ -39,12 +33,7 @@
                       [dataSource]="dataSource"
                       class="mat-elevation-z8"
                     >
-                      <ng-container matColumnDef="hospital">
-                        <th mat-header-cell *matHeaderCellDef>Hospital</th>
-                        <td mat-cell *matCellDef="let item">
-                          {{ item.hospital.hospitalName }}
-                        </td>
-                      </ng-container>
+                     
                       <ng-container matColumnDef="child">
                         <th mat-header-cell *matHeaderCellDef>Child</th>
                         <td mat-cell *matCellDef="let item">
@@ -66,13 +55,13 @@
                       <ng-container matColumnDef="date">
                         <th mat-header-cell *matHeaderCellDef>Date</th>
                         <td mat-cell *matCellDef="let item">
-                          {{ item.appointmentDate }}
+                          {{ item.appointmentDate | dateFormat}}
                         </td>
                       </ng-container>
                       <ng-container matColumnDef="reminder">
                         <th mat-header-cell *matHeaderCellDef>Reminder</th>
                         <td mat-cell *matCellDef="let item">
-                          <button mat-raised-button  (click)="sendReminder(item.child.childId)">Book Appointment</button>
+                          <button mat-raised-button  (click)="sendReminder(item.child.childId)">Send Reminder</button>
                         </td>
                       </ng-container>
 

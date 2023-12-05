@@ -1,30 +1,25 @@
 <nav [ngClass]="{ sidebarPushRight: isActive, collapsed: collapsed }" class="sidebar">
     <div class="list-group">
-        <a [routerLinkActive]="['router-link-active']" class="list-group-item" routerLink="/dashboard">
+        <a [routerLinkActive]="['router-link-active']" class="list-group-item" routerLink="/dashboard" (click)="viewDashboard()">
+
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;
             <span>{{ 'Dashboard' | translate }}</span>
         </a>
-        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/charts']" class="list-group-item">
-            <i class="fa fa-heartbeat"></i>&nbsp;
-            <span>{{ 'Vaccine records' | translate }}</span>
-        </a>
-        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/tables']" class="list-group-item">
+        
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/tables']" class="list-group-item" (click)="requestVaccine()">
             <i class="fa fa-arrows-h	"></i>&nbsp;
 
-            <span>{{ 'New vaccine request' | translate }}</span>
+            <span>{{ 'Request new vaccine' | translate }}</span>
         </a>
-        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/forms']" class="list-group-item">
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/forms']" class="list-group-item"(click)="viewBookings()">
             <i class="fa fa-book"></i>&nbsp;
             <span>{{ 'Bookings' | translate }}</span>
         </a>
-        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/bs-element']" class="list-group-item">
+        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/bs-element']" class="list-group-item" (click)="mangeSlot()">
             <i class="fa fa-calendar"></i>&nbsp;
             <span>{{ 'Slot' | translate }}</span>
         </a>
-        <a [routerLinkActive]="['router-link-active']" [routerLink]="['/grid']" class="list-group-item">
-            <i class="fa fa-user"></i>&nbsp;
-            <span>{{ 'My profile' | translate }}</span>
-        </a>
+        
         <!-- <a [routerLinkActive]="['router-link-active']" [routerLink]="['/components']" class="list-group-item">
             <i class="fa fa-th-list"></i>&nbsp;
             <span>{{ 'Component' | translate }}</span>

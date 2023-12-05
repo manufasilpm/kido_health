@@ -37,7 +37,7 @@
       <ng-container matColumnDef="bookAppointment">
         <th mat-header-cell *matHeaderCellDef> </th>
         <td mat-cell *matCellDef="let child">
-          <button mat-button style="color: white; background-color: blueviolet;" (click)="openBookingForm(child.name,child.id)">Book Appointment</button>
+          <button mat-button style="color: white; background-color: blueviolet;" (click)="openBookingForm(child.name,child.id,child.age)">Book Appointment</button>
         </td>
       </ng-container>
   

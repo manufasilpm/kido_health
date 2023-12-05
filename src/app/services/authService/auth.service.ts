@@ -10,6 +10,7 @@ export class AuthService {
   private baseUrl = 'http://localhost:9090/auth'; // Change this to your backend authentication endpoint
   private tokenKey = 'auth_token';
   private userIdKey = 'user_id';
+  private userNameKey = 'user_name';
   constructor(private http: HttpClient) { }
 
   login(user:User): Observable<User> {
@@ -36,14 +37,18 @@ export class AuthService {
     return localStorage.getItem(this.tokenKey);
   }
 
-  setUserId(userId: string): void {
+  setUserId(userId: string,userName:string): void {
     localStorage.setItem(this.userIdKey, userId);
+    localStorage.setItem(this.userNameKey, userName);
   }
 
   getUserId(): string | null {
     return localStorage.getItem(this.userIdKey);
   }
 
+  getUserName(): string | null {
+    return localStorage.getItem(this.userNameKey);
+  }
   isAuthenticated(): boolean {
     return !!this.getToken();
   }

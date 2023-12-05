@@ -1,5 +1,5 @@
 <div [@routerTransition]>
-    <h2 class="text-muted">Dashboard <small>Parent</small></h2>
+    <h2 class="text-muted">Parent Dashboard </h2>
     <div class="row">
         <div class="col-md-12">
             <ngb-carousel>
@@ -20,22 +20,18 @@
     </div>
     <hr />
     <div class="row">
-        <div class="col-xl-3 col-lg-6" (click)="viewChild()" >
-            <app-stat [bgClass]="'primary'" [count]="26" [icon]="'fa fa-heartbeat'" [label]="'View Childs'"></app-stat>
+        <div class="col-xl-4 col-lg-6" (click)="viewChild()" >
+            <app-stat [bgClass]="'primary'"  [icon]="'fa fa-heartbeat'" [label]="'View Childs'"></app-stat>
         </div>
-        <div class="col-xl-3 col-lg-6" (click)="openPopup()" >
-            <app-stat [bgClass]="'warning'" [count]="12" [icon]="'fa-tasks'" [label]="'View Vaccine Report'"></app-stat>
+        <div class="col-xl-4 col-lg-6" (click)="openPopup()" >
+            <app-stat [bgClass]="'warning'"  [icon]="'fa-tasks'" [label]="'View Vaccine Report'"></app-stat>
         </div>
-        <div class="col-xl-3 col-lg-6" (click)="viewBookings()">
+        <div class="col-xl-4 col-lg-6" (click)="viewBookings()">
             <app-stat
                 [bgClass]="'success'"
-                [count]="124"
                 [icon]="'fa fa-book'"
                 [label]="'Bookings'"
             ></app-stat>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'danger'" [count]="13" [icon]="'fa fa-calendar'" [label]="'Slot'"></app-stat>
         </div>
     </div>
     <hr />
@@ -44,28 +40,15 @@
     }}</ngb-alert> -->
     <hr />
     <div class="row">
-        <div class="col-lg-8">
+        <div >
             <div class="card card-default">
-                <div class="card-header"><i class="fa fa-clock-o fa-fw"></i> Responsive Timeline</div>
+                <div class="card-header"><i class=""></i> Kido Health: Simplifying Vaccination for Safer Tomorrow</div>
                 <!-- /.card-header -->
                 <app-timeline></app-timeline>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
         </div>
-        <!-- /.col-lg-8 -->
-        <div class="col-lg-4">
-            <div class="card card-default mb-3">
-                <div class="card-header"><i class="fa fa-bell fa-fw"></i> Notifications card</div>
-                <!-- /.card-header -->
-                <app-notification></app-notification>
-                <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-
-            <app-chat></app-chat>
-            <!-- /.card .chat-card -->
-        </div>
-        <!-- /.col-lg-4 -->
+       
     </div>
 </div>

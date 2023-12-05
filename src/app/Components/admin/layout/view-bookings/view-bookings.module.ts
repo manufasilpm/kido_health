@@ -11,6 +11,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { DateFormatPipe3 } from '../DateFomatPipe3';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatNativeDateModule,
     MatIconModule,
     MatButtonModule,
+    MatSelectModule
   ],
-  declarations: [AdminViewBookingsComponent],
+  declarations: [AdminViewBookingsComponent,DateFormatPipe3],
 })
 export class ViewBookingModule {}

@@ -12,7 +12,7 @@ import { BookingService } from 'src/app/services/booking/booking.service';
 import { ChildCreationComponent } from '../../child/child-creation/child-creation.component';
 import { Hospital } from 'src/app/models/Hospital';
 import { Vaccine } from 'src/app/models/Vaccine';
-import { Toast } from 'ngx-toastr';
+import { Toast, ToastrService } from 'ngx-toastr';
 import { Appointment } from 'src/app/models/Appointment';
 
 @Component({
@@ -30,6 +30,7 @@ export class BookingPopUpComponent implements OnInit {
   myDate!: number;
   day!: number;
   dayString!: string;
+  minDate!: Date ;
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -65,9 +66,11 @@ export class BookingPopUpComponent implements OnInit {
           (data) => {
             console.log('Child saved successfully:', data);
             this.dialogRef.close();
+            this.toaster.success("Your slot booked successfully")
           },
           (error) => {
             console.error('Error saving child:', error);
+            this.toaster.error("No slots has been left for this booking","Something went worng..")
           }
         );
     }
@@ -86,7 +89,12 @@ export class BookingPopUpComponent implements OnInit {
   getVaccines() {
     this.bookingService.getVaccinesList().subscribe(
       (response) => {
-        this.vaccines = response; // Assuming your service returns an array of hospitals
+        response.forEach(it=>{
+          if(it.vaccineCategory == this.data.age && it.status=="Approved"){
+            this.vaccines.push(it); 
+          }
+        })
+        // Assuming your service returns an array of hospitals
       },
       (error) => {
         console.error('Error fetching hospitals:', error);
@@ -152,8 +160,11 @@ export class BookingPopUpComponent implements OnInit {
     public dialogRef: MatDialogRef<BookingPopUpComponent>,
     private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA)
-    public data: { parentId: string; childName: string; childId: number }
+    public data: { parentId: string; childName: string; childId: number;age:string},
+    private toaster:ToastrService
   ) {
     console.log(this.form);
+    this.minDate=new Date()
+
   }
 }

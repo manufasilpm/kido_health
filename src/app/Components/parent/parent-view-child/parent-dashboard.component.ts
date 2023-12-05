@@ -57,12 +57,12 @@ export class ParentDashboardComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
-  openBookingForm(childName: string, childId: number) {
+  openBookingForm(childName: string, childId: number,age:string) {
     console.log(childId, 'hey ');
 
     const dialogRef = this.dialog.open(BookingPopUpComponent, {
       width: '400px',
-      data: { childName: childName, childId: childId },
+      data: { childName: childName, childId: childId,age:age },
     });
     dialogRef.afterClosed().subscribe((result) => {
       this.refreshTable();

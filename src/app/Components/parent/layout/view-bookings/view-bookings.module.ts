@@ -5,11 +5,11 @@ import { StatModule } from '../../../../shared';
 import { ViewBookingsComponent } from './view-bookings.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTableModule } from '@angular/material/table';
-import { DateFormatPipe } from 'src/app/Components/DateFomatPipe';
+import { DateFormatPipe2 } from '../DateFomatPipe2';
 
 @NgModule({
     imports: [CommonModule, NgbCarouselModule, NgbAlertModule,MatDatepickerModule,MatTableModule],
-    declarations: [ViewBookingsComponent,DateFormatPipe]
+    declarations: [ViewBookingsComponent,DateFormatPipe2]
 })
 export class ViewBookingModule {}
 

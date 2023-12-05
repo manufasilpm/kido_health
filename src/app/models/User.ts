@@ -3,6 +3,7 @@ export class User {
      phoneNumber: string;
     password: string;
     parentId!: number;
+    name!:string
    
   
     constructor(phoneNumber: string, password: string) {

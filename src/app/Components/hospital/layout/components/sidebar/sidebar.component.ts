@@ -69,4 +69,20 @@ export class SidebarComponent implements OnInit {
     onLoggedout() {
         localStorage.removeItem('isLoggedin');
     }
+    
+
+    viewDashboard() {
+        this.router.navigate(["/hospitalDashboard"])
+    }
+    requestVaccine() {
+        this.router.navigateByUrl("/requestVaccine")
+    }
+
+    viewBookings() {
+        this.router.navigateByUrl("/hospitalDashboard/bookings")
+    }
+    mangeSlot() {
+        this.router.navigateByUrl("/hospitalDashboard/mangeSlot")
+    }
+
 }

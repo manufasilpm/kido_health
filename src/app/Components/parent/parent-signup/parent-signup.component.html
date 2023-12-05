@@ -1,4 +1,4 @@
-<div class="signup">
+<body style="background-image: url('../../../../assets/home-bg.jpg ');"><div >
 <mat-card class="signup-card mat-elevation-z0" >
     <mat-card-header>
       <mat-card-title class="h1"> Parent Signup</mat-card-title>
@@ -22,10 +22,15 @@
   
         <mat-form-field>
           <mat-label>Phone Number:</mat-label>
-          <input matInput formControlName="phoneNo" required pattern="^\d{10}$">
+          <input matInput type="tel" formControlName="phoneNo" required pattern="^\d{10}$">
         </mat-form-field>
         <br>
-  
+
+        <mat-form-field>
+          <mat-label>Email:</mat-label>
+          <input matInput type="email" formControlName="email" required>
+        </mat-form-field>
+        <br>
         <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid">Sign Up</button>
       </form>
       <mat-progress-bar *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
@@ -35,3 +40,4 @@
     </mat-card-content>
   </mat-card>
   </div>
+</body>

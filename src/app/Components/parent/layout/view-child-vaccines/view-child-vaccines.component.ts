@@ -9,6 +9,8 @@ import { ToastrService } from 'ngx-toastr';
 import { AdminConfirmDialogComponent } from 'src/app/Components/admin/confirm-dialog/confirm-dialog.component';
 import { Appointment } from 'src/app/models/Appointment';
 import { ChildService } from 'src/app/services/child/child.service';
+import { DateFormatPipe } from 'src/app/Components/DateFomatPipe';
+
 
 @Component({
   selector: 'app-view-vaccines',

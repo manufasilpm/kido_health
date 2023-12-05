@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Hospital } from 'src/app/models/Hospital';
 import { HospitalService } from 'src/app/services/hospital/hospital.service';
 
@@ -17,7 +18,8 @@ export class HospitalsignupComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private hospitalService: HospitalService,
-    private router:Router
+    private router:Router,
+    private toaster:ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -53,10 +55,12 @@ export class HospitalsignupComponent implements OnInit {
       (data) => {
         console.log('Parent added successfully.', data);
         this.showProgressBar = false;
+        this.toaster.success('Hospital registered successfully.')
         this.router.navigate(['/login', { cardType: 'hospital' }]);
 
       },
       (error) => {
+        this.toaster.error('Please try again after some time','Something went wrong..')
         console.error('Error saving parent:', error);
         this.showProgressBar = false;
 

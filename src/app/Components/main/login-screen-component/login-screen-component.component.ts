@@ -87,12 +87,14 @@ export class LoginScreenComponentComponent implements OnInit {
 
       userObserver.subscribe(
         (response) => {
-          // console.log('Login successful:', data);
+         console.log('Login successful:', response);
           // console.log(username);
-          const parentId = response.parentId;
+          const userId = response.parentId;
+          const userName = response.name;
+          console.log("userName"+userName)
 
 
-          this.authService.setUserId(parentId.toString());
+          this.authService.setUserId(userId.toString(),userName.toString());
           console.log("Card Type" + this.receivedCardType)
           this.notifyService.showSuccess("", "Login Success")
           if (this.receivedCardType == "parent") {
